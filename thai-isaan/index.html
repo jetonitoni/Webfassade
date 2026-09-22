@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Thai Isaan Take Away KLG</title>
+<meta name="description" content="Thai Isaan – thailändisches Take-away an der Langenthalerstrasse 22 in Vordemwald. Speisekarte und Vorbestellung per SMS oder E-Mail.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700;800&family=Sarabun:wght@400;600;700&display=swap">
+<style>
+/* Thai Isaan · Entwurf von Webfassade
+   Idee: Indigo wie die gefärbten Stoffe aus dem Isaan, Ringelblumen-Orange,
+   Karo-Streifen wie ein Pha-Khao-Ma-Tuch, ein Klebreiskorb und ein Tonmörser für Som Tam.
+   Schriften von thailändischen Gestaltern: Kanit und Sarabun. */
+:root{
+  --reis:#FBF4E6; --reis-2:#F3E6CC; --papier:#FFFDF8;
+  --indigo:#1E2759; --indigo-2:#2C3A7C; --indigo-3:#131938;
+  --tinte:#161B33; --tinte-2:#4F5575; --hell:#FBF1DE;
+  --gold:#F29A1F; --gold-2:#B8650A; --gold-hell:#FFD48A; --chili:#D2352B; --limette:#7FB53A;
+  --linie:rgba(22,27,51,.14);
+  --anzeige:'Kanit','Noto Sans Thai','Loma',system-ui,sans-serif;
+  --text:'Sarabun','Noto Sans Thai','Loma',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--reis);color:var(--tinte);font:400 18px/1.6 var(--text);overflow-x:clip}
+a{color:inherit}
+svg{max-width:100%}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+h1,h2,h3,h4{margin:0;line-height:1.1;text-wrap:balance}
+p{margin:0}
+button{font:inherit;color:inherit}
+[id]{scroll-margin-top:90px}
+.innen{width:100%;max-width:1180px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+.pha{height:14px;background-color:var(--gold);background-image:repeating-linear-gradient(90deg,rgba(210,53,43,.85) 0 7px,transparent 7px 18px,rgba(30,39,89,.9) 18px 21px,transparent 21px 30px,rgba(127,181,58,.95) 30px 32px,transparent 32px 40px),repeating-linear-gradient(0deg,rgba(210,53,43,.85) 0 7px,transparent 7px 18px,rgba(30,39,89,.9) 18px 21px,transparent 21px 30px,rgba(127,181,58,.95) 30px 32px,transparent 32px 40px)}
+
+.entwurf{background:var(--indigo-3);color:var(--hell);font:500 14px/1.45 var(--text);text-align:center;padding:9px 16px;text-wrap:balance}
+.entwurf b{font-weight:700;color:var(--gold)}
+
+.kopf{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(251,244,230,.95);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--linie)}
+.kopf .innen{display:flex;align-items:center;gap:20px;min-height:68px}
+.wortmarke{display:inline-flex;align-items:baseline;gap:10px;text-decoration:none;color:var(--indigo);font:700 27px/1 var(--anzeige);white-space:nowrap}
+.wortmarke span{font:500 18px/1 var(--anzeige);color:var(--gold-2)}
+.navi{display:flex;gap:26px;margin-left:auto}
+.navi a{text-decoration:none;font:500 16px/1.25 var(--anzeige);color:var(--tinte)}
+.navi a:hover{color:var(--gold-2)}
+.navi small{display:block;font:400 13px/1.3 var(--anzeige);color:var(--gold-2)}
+.knopf{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:12px;border:2px solid transparent;font:600 17px/1 var(--anzeige);text-decoration:none;cursor:pointer;transition:transform .15s ease,background-color .15s ease,color .15s ease}
+.knopf:hover{transform:translateY(-1px)}
+.knopf:active{transform:translateY(1px)}
+.knopf-gold{background:var(--gold);color:var(--indigo-3)}
+.knopf-gold:hover{background:var(--gold-hell)}
+.knopf-indigo{background:var(--indigo);color:var(--hell)}
+.knopf-indigo:hover{background:var(--indigo-2)}
+.knopf-rand{border-color:currentColor;background:transparent;color:var(--indigo)}
+.knopf-rand:hover{background:var(--indigo);color:var(--hell);border-color:var(--indigo)}
+.kopf .knopf{min-height:44px;padding:0 18px;font-size:16px}
+.zahl{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--chili);color:#fff;font:600 12px/1 var(--anzeige)}
+.zahl[hidden]{display:none}
+@media (max-width:900px){.navi{display:none}.kopf .knopf{margin-left:auto}}
+@media (max-width:420px){.wortmarke span{display:none}}
+
+.hero{position:relative;overflow:hidden;background:var(--indigo);color:var(--hell);padding-block:clamp(36px,6vw,84px) clamp(40px,6vw,80px)}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1.3px,transparent 1.5px);background-size:20px 20px;pointer-events:none}
+.isan{position:absolute;right:-1vw;bottom:-.18em;font:800 clamp(150px,30vw,420px)/1 var(--anzeige);color:transparent;-webkit-text-stroke:2px rgba(242,154,31,.26);pointer-events:none;user-select:none;white-space:nowrap}
+.hero .innen{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.gruss{font:500 16px/1.3 var(--anzeige);color:var(--gold-hell)}
+.gruss span{color:var(--gold)}
+.hero h1{margin-top:10px;font:800 clamp(62px,10.5vw,136px)/.92 var(--anzeige);color:var(--gold);letter-spacing:-.01em}
+.claim{margin-top:18px;font:600 clamp(22px,2.6vw,30px)/1.25 var(--anzeige);max-width:24ch}
+.intro{margin-top:12px;color:rgba(251,241,222,.84);max-width:44ch}
+.aktionen{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.hero .knopf-rand{color:var(--hell)}
+.hero .knopf-rand:hover{background:var(--hell);color:var(--indigo);border-color:var(--hell)}
+.bild{margin:0}
+.stillleben{display:block;width:100%;height:auto}
+@media (max-width:860px){.hero .innen{grid-template-columns:minmax(0,1fr)}.bild{max-width:440px;width:100%;justify-self:center}}
+
+.schritte{padding-block:clamp(40px,6vw,64px)}
+.oberzeile{font:500 15px/1.3 var(--anzeige);letter-spacing:.06em;color:var(--gold-2)}
+.titel{font:700 clamp(30px,4.4vw,50px)/1.1 var(--anzeige);color:var(--indigo);margin-top:6px}
+.schritte ol{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.schritte li{background:var(--papier);border:1px solid var(--linie);border-radius:16px;padding:20px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;align-items:start}
+.schritte .n{grid-row:span 2;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--indigo);color:var(--gold);font:700 20px/1 var(--anzeige)}
+.schritte h3{font:600 20px/1.2 var(--anzeige);color:var(--indigo)}
+.schritte p{font-size:16px;color:var(--tinte-2)}
+@media (max-width:760px){.schritte ol{grid-template-columns:minmax(0,1fr)}}
+
+.essen{background:var(--reis-2);padding-block:clamp(48px,7vw,88px)}
+.essen-kopf{display:grid;gap:14px;max-width:760px;margin-bottom:28px}
+.notiz{display:grid;gap:6px;padding:14px 16px;border:1.5px dashed currentColor;border-radius:14px;font-size:16px;line-height:1.5}
+.notiz b{font:600 13px/1.3 var(--anzeige);letter-spacing:.08em;text-transform:uppercase}
+.essen .notiz{color:var(--tinte);background:var(--papier)}
+.essen-raster{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start}
+.karten{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.gericht{position:relative;overflow:hidden;background:var(--papier);border-radius:16px;padding:22px 18px 16px;display:grid;gap:4px;align-content:start;box-shadow:0 1px 0 var(--linie),0 18px 30px -26px rgba(22,27,51,.6)}
+.gericht::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;background-color:var(--gold);background-image:repeating-linear-gradient(90deg,rgba(210,53,43,.85) 0 7px,transparent 7px 18px,rgba(30,39,89,.9) 18px 21px,transparent 21px 30px,rgba(127,181,58,.95) 30px 32px,transparent 32px 40px),repeating-linear-gradient(0deg,rgba(210,53,43,.85) 0 7px,transparent 7px 18px,rgba(30,39,89,.9) 18px 21px,transparent 21px 30px,rgba(127,181,58,.95) 30px 32px,transparent 32px 40px)}
+.thai{font:500 19px/1.3 var(--anzeige);color:var(--gold-2)}
+.gericht h3{font:600 22px/1.2 var(--anzeige);color:var(--indigo)}
+.gericht p{font-size:16px;line-height:1.45;color:var(--tinte-2)}
+.marker{justify-self:start;margin-top:6px;font:600 11px/1 var(--anzeige);letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;border-radius:999px;border:1px dashed var(--tinte-2);color:var(--tinte-2)}
+.zeile{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px}
+.preis{font:600 20px/1 var(--anzeige);color:var(--chili);font-variant-numeric:tabular-nums;white-space:nowrap}
+.plus{position:relative;width:46px;height:46px;border-radius:12px;border:0;background:var(--indigo);color:#fff;font:500 26px/1 var(--anzeige);cursor:pointer;display:grid;place-items:center;transition:background-color .15s,color .15s}
+.plus:hover{background:var(--indigo-2)}
+.plus[aria-pressed="true"]{background:var(--gold);color:var(--indigo-3)}
+.plus .anz{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:var(--chili);color:#fff;font-size:11px;display:grid;place-items:center}
+.gericht.platz{background:transparent;box-shadow:none;border:2px dashed rgba(22,27,51,.3)}
+.gericht.platz::before{display:none}
+.gericht.platz .thai{font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+@media (max-width:620px){.karten{grid-template-columns:minmax(0,1fr)}}
+
+.tasche{background:var(--indigo);color:var(--hell);border-radius:20px;padding:clamp(18px,3vw,26px);display:grid;grid-template-columns:minmax(0,1fr);gap:14px;min-width:0;box-shadow:0 30px 50px -34px rgba(19,25,56,.9)}
+@media (min-width:1001px) and (min-height:860px){.tasche{position:sticky;top:92px}}
+.tasche .oberzeile{color:var(--gold-hell)}
+.tasche h2{font:700 28px/1.1 var(--anzeige);color:var(--gold)}
+.posten{list-style:none;margin:0;padding:12px 0;display:grid;gap:10px;border-block:1px solid rgba(251,241,222,.18)}
+.posten li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;align-items:center}
+.posten li.leer{display:block;color:rgba(251,241,222,.75);font-size:16px}
+.posten .name{font-weight:700;line-height:1.3}
+.menge{display:inline-flex;align-items:center;border:1px solid rgba(251,241,222,.35);border-radius:10px}
+.menge button{width:34px;height:34px;border:0;background:transparent;font-size:18px;font-weight:700;cursor:pointer;border-radius:10px;color:var(--hell)}
+.menge span{min-width:18px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.betrag{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.summe{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font:600 20px/1.2 var(--anzeige);color:var(--gold)}
+.summe small{display:block;font:400 14px/1.4 var(--text);color:rgba(251,241,222,.75)}
+.summe[hidden]{display:none}
+.felder{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.feld{display:grid;gap:5px;min-width:0}
+.feld.voll{grid-column:1/-1}
+.feld label{font:500 14px/1.3 var(--anzeige);color:var(--gold-hell)}
+.feld input,.feld select,.feld textarea{width:100%;min-height:48px;padding:10px 12px;border:1px solid transparent;border-radius:10px;background:#fff;color:var(--tinte);font:400 16px/1.35 var(--text)}
+.feld textarea{min-height:78px;resize:vertical}
+@media (max-width:520px){.felder{grid-template-columns:minmax(0,1fr)}}
+.senden{display:flex;flex-wrap:wrap;gap:10px}
+.senden .knopf{flex:1 1 170px}
+.tasche .knopf-rand{color:var(--hell)}
+.tasche .knopf-rand:hover{background:var(--hell);color:var(--indigo);border-color:var(--hell)}
+.vorschau{display:grid;gap:6px}
+.vorschau p{font:500 14px/1.3 var(--anzeige);color:var(--gold-hell)}
+.vorschau pre{margin:0;padding:12px 14px;border-radius:12px;background:var(--indigo-2);color:var(--hell);font:400 14px/1.5 ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-word;max-height:220px;overflow:auto}
+.tasche .notiz{color:var(--hell);background:rgba(255,255,255,.06);font-size:15px}
+.tasche .senden .knopf{flex:1 1 100%}
+@media (max-width:1000px){.essen-raster{grid-template-columns:minmax(0,1fr)}}
+
+.ort{padding-block:clamp(48px,7vw,88px)}
+.ort .innen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:stretch}
+.kachel{border-radius:20px;padding:clamp(20px,3vw,32px);display:grid;gap:14px;align-content:start}
+.kachel.zeiten{background:var(--indigo);color:var(--hell)}
+.kachel.zeiten .oberzeile{color:var(--gold-hell)}
+.kachel.zeiten .titel{color:var(--gold)}
+.tage{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.tage li{display:grid;gap:4px;justify-items:center;padding:10px 4px;border-radius:10px;background:rgba(251,241,222,.07);border:1px dashed rgba(251,241,222,.3)}
+.tage span{font:600 15px/1 var(--anzeige)}
+.tage b{font:500 11px/1 var(--anzeige);color:var(--gold-hell);white-space:nowrap}
+.kachel.zeiten .notiz{color:var(--hell)}
+.kachel.adresse{background:var(--papier);border:1px solid var(--linie)}
+address{font-style:normal;display:grid;gap:2px;font-size:19px}
+address strong{font:600 21px/1.3 var(--anzeige);color:var(--indigo)}
+.kachel .aktionen{margin-top:6px}
+@media (max-width:900px){.ort .innen{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:420px){.tage{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+.fuss{background:var(--indigo-3);color:#E9E6F2;padding-bottom:40px}
+.fuss .pha{height:22px}
+.fuss-raster{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));padding-top:44px}
+.fuss .wortmarke{color:var(--gold)}
+.fuss .wortmarke span{color:var(--gold-hell)}
+.fuss h4{margin:0 0 8px;font:500 13px/1.3 var(--anzeige);letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.fuss p{font-size:16px;line-height:1.65}
+.recht{margin-top:36px;padding-top:16px;border-top:1px solid rgba(233,230,242,.18);display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px}
+.recht button{background:none;border:0;padding:0;color:inherit;text-decoration:underline;cursor:pointer;font-size:14px}
+.schutz{flex-basis:100%;opacity:.8}
+
+.handy{display:none}
+@media (max-width:760px){
+  .handy{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(19,25,56,.97);border-top:4px solid var(--gold)}
+  .handy .knopf{min-height:48px;padding:0 12px}
+  .handy .knopf-rand{color:var(--hell)}
+  body{padding-bottom:calc(74px + env(safe-area-inset-bottom,0px))}
+}
+.toast{position:fixed;left:50%;bottom:calc(94px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;width:max-content;max-width:calc(100vw - 32px);padding:12px 16px;border-radius:12px;background:var(--indigo-3);color:#fff;font-size:15px;line-height:1.45;box-shadow:0 14px 30px -12px rgba(0,0,0,.5)}
+.toast[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="entwurf"><b>Unverbindlicher Entwurf</b> für Thai Isaan, gestaltet von Webfassade · Jeton Bardhaj. Noch nicht die offizielle Website des Betriebs. Urheberrechtlich geschützt.</div>
+<div class="pha" aria-hidden="true"></div>
+<header class="kopf">
+  <div class="innen">
+    <a class="wortmarke" href="#start" aria-label="Thai Isaan, zum Seitenanfang">Thai Isaan <span lang="th" aria-hidden="true">อีสาน</span></a>
+    <nav class="navi" aria-label="Hauptnavigation">
+      <a href="#speisekarte">Speisekarte<small lang="th">เมนู</small></a>
+      <a href="#bestellen">Bestellen<small lang="th">สั่งอาหาร</small></a>
+      <a href="#adresse">Adresse<small lang="th">ที่อยู่</small></a>
+    </nav>
+    <a class="knopf knopf-indigo" href="#bestellen">Bestellen <span class="zahl" data-zahl hidden>0</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="start" aria-labelledby="h-start">
+    <span class="isan" lang="th" aria-hidden="true">อีสาน</span>
+    <div class="innen">
+      <div>
+        <p class="gruss"><span lang="th">สวัสดี</span> · Thai Take-away in Vordemwald AG</p>
+        <h1 id="h-start">Thai Isaan</h1>
+        <p class="claim">Thailändische Spezialitäten zum Mitnehmen.</p>
+        <p class="intro">An der Langenthalerstrasse 22. Gerichte auswählen, per SMS vorbestellen und zur gewünschten Zeit abholen.</p>
+        <div class="aktionen">
+          <a class="knopf knopf-gold" href="#speisekarte">Jetzt vorbestellen</a>
+          <a class="knopf knopf-rand" href="tel:+41797146913">Anrufen: 079 714 69 13</a>
+        </div>
+      </div>
+      <figure class="bild"><svg class="stillleben" viewBox="0 0 640 540" role="img" aria-label="Geflochtener Klebreiskorb und Tonmörser mit Stössel auf einem Bananenblatt, daneben Chili, Limette und Ringelblumen">
+<defs>
+<pattern id="ti-flecht" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(35)">
+  <rect width="18" height="18" fill="#C99A55"/>
+  <rect width="9" height="9" fill="#E1BC7C"/><rect x="9" y="9" width="9" height="9" fill="#E1BC7C"/>
+  <path d="M0 9H18M9 0V18" stroke="#9C7234" stroke-width="1.2" opacity=".55"/>
+</pattern>
+<linearGradient id="ti-ton" x1="0" x2="1"><stop offset="0" stop-color="#C9673A"/><stop offset=".6" stop-color="#A94E27"/><stop offset="1" stop-color="#7E3718"/></linearGradient>
+<linearGradient id="ti-glanz" x1="0" x2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".28"/><stop offset=".35" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+<radialGradient id="ti-schatten" cx="50%" cy="50%" r="50%"><stop offset=".55" stop-color="#0A0F24" stop-opacity=".45"/><stop offset="1" stop-color="#0A0F24" stop-opacity="0"/></radialGradient>
+</defs>
+<ellipse cx="330" cy="470" rx="300" ry="52" fill="url(#ti-schatten)"/>
+<g transform="rotate(-7 330 430)">
+<clipPath id="ti-blatt"><path d="M40 430 C150 350 500 340 625 420 C505 500 160 505 40 430 Z"/></clipPath>
+<path d="M40 430 C150 350 500 340 625 420 C505 500 160 505 40 430 Z" fill="#3E7D39"/>
+<g clip-path="url(#ti-blatt)">
+<path d="M40 430 C150 350 500 340 625 420" fill="none" stroke="#2F6329" stroke-width="3"/>
+<path d="M46 430 C200 418 450 415 620 421" fill="none" stroke="#A9CF7A" stroke-width="4"/>
+<path d="M80 428.0 C92 405 106 392 120 380" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M80 431 C92 452 106 466 120 476" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M116 427.5 C128 405 142 392 156 380" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M116 431 C128 452 142 466 156 476" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M152 427.0 C164 405 178 392 192 380" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M152 431 C164 452 178 466 192 476" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M188 428.0 C200 405 214 392 228 380" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M188 431 C200 452 214 466 228 476" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M224 427.5 C236 405 250 392 264 380" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M224 431 C236 452 250 466 264 476" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M260 427.0 C272 405 286 392 300 380" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M260 431 C272 452 286 466 300 476" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M296 428.0 C308 405 322 392 336 380" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M296 431 C308 452 322 466 336 476" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M332 427.5 C344 405 358 392 372 380" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M332 431 C344 452 358 466 372 476" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M368 427.0 C380 405 394 392 408 380" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M368 431 C380 452 394 466 408 476" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M404 428.0 C416 405 430 392 444 380" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M404 431 C416 452 430 466 444 476" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M440 427.5 C452 405 466 392 480 380" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M440 431 C452 452 466 466 480 476" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M476 427.0 C488 405 502 392 516 380" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M476 431 C488 452 502 466 516 476" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M512 428.0 C524 405 538 392 552 380" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M512 431 C524 452 538 466 552 476" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M548 427.5 C560 405 574 392 588 380" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M548 431 C560 452 574 466 588 476" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M584 427.0 C596 405 610 392 624 380" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+<path d="M584 431 C596 452 610 466 624 476" fill="none" stroke="#5E9B4F" stroke-width="1.6" opacity=".8"/>
+</g>
+</g>
+<g>
+<path d="M118 438 L252 438 L244 414 L126 414 Z" fill="#7A5626"/>
+<rect x="132" y="438" width="14" height="14" rx="2" fill="#5E421C"/><rect x="226" y="438" width="14" height="14" rx="2" fill="#5E421C"/>
+<path d="M124 414 C116 360 112 290 118 222 L252 222 C258 290 254 360 246 414 Z" fill="url(#ti-flecht)" stroke="#6E4E22" stroke-width="3" stroke-linejoin="round"/>
+<path d="M124 414 C116 360 112 290 118 222 L252 222 C258 290 254 360 246 414 Z" fill="url(#ti-glanz)"/>
+<rect x="113" y="330" width="144" height="12" rx="4" fill="#A77C3C" stroke="#6E4E22" stroke-width="2"/>
+<path d="M104 222 C104 196 110 178 118 172 L252 172 C260 178 266 196 266 222 Z" fill="url(#ti-flecht)" stroke="#6E4E22" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="185" cy="172" rx="67" ry="12" fill="#D9B06A" stroke="#6E4E22" stroke-width="2.5"/>
+<rect x="100" y="214" width="170" height="14" rx="6" fill="#A77C3C" stroke="#6E4E22" stroke-width="2"/>
+<path d="M108 220 C70 150 120 96 185 92 C250 96 300 150 262 220" fill="none" stroke="#4E3616" stroke-width="4.5" stroke-linecap="round"/>
+</g>
+<g>
+<path d="M362 318 C364 380 392 428 418 440 L522 440 C548 428 576 380 578 318 Z" fill="url(#ti-ton)" stroke="#6B2E13" stroke-width="3" stroke-linejoin="round"/>
+<path d="M404 440 L536 440 L528 456 L412 456 Z" fill="#7E3718"/>
+<ellipse cx="470" cy="318" rx="108" ry="28" fill="#D97F52" stroke="#6B2E13" stroke-width="3"/>
+<ellipse cx="470" cy="320" rx="92" ry="20" fill="#6E2C12"/>
+<path d="M521.1 320.1 q3.8 -7.5 7.5 3.9" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M439.3 312.3 q13.4 -7.7 26.9 1.1" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M436.3 320.5 q-13.9 -9.8 -27.7 0.6" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M405.5 325.3 q0.8 -6.5 1.7 4.0" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M511.7 324.9 q-14.0 -12.0 -28.0 0.1" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M484.5 314.3 q-10.5 -8.9 -21.0 2.6" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M438.4 321.8 q12.8 -7.2 25.6 1.6" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M396.2 318.2 q3.5 -9.4 7.1 3.9" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M399.8 325.8 q-13.9 -10.2 -27.8 0.4" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M543.6 316.3 q0.3 -10.7 0.5 4.0" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M480.4 319.2 q8.0 -10.0 16.1 3.3" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M528.4 324.1 q12.1 -10.2 24.2 2.0" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M493.9 314.0 q7.0 -6.3 14.0 3.5" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M441.5 314.1 q-0.3 -10.2 -0.5 4.0" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M472.0 325.5 q-14.0 -11.2 -28.0 0.2" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M479.1 318.7 q-9.0 -7.6 -18.0 3.1" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M403.6 312.7 q-13.3 -11.2 -26.5 1.3" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M517.3 315.8 q-13.5 -6.1 -27.1 1.0" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M478.8 325.5 q8.1 -6.3 16.3 3.3" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M439.7 313.2 q-13.9 -7.6 -27.9 0.4" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M503.2 315.0 q-7.0 -8.9 -14.0 3.5" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M518.3 314.6 q-11.0 -6.7 -22.0 2.5" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M523.4 321.7 q-12.2 -7.2 -24.5 1.9" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M499.8 321.2 q-4.9 -7.1 -9.9 3.7" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M527.9 315.5 q13.8 -6.1 27.6 0.6" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M489.4 312.9 q-6.8 -7.0 -13.6 3.5" fill="none" stroke="#D5EAA0" stroke-width="3" stroke-linecap="round"/>
+<path d="M418 316 A13 13 0 0 1 442 316 Z" fill="#E24A36" stroke="#B22E1F" stroke-width="1.5"/>
+<path d="M488 313 A13 13 0 0 1 512 313 Z" fill="#E24A36" stroke="#B22E1F" stroke-width="1.5"/>
+<rect x="441" y="303" width="28" height="6" rx="3" fill="#6CA83A" transform="rotate(-12 455 306)"/>
+<rect x="501" y="313" width="28" height="6" rx="3" fill="#6CA83A" transform="rotate(8 515 316)"/>
+<ellipse cx="470" cy="318" rx="5" ry="3.6" fill="#D6A15A" stroke="#A9773A" stroke-width="1"/>
+<ellipse cx="410" cy="322" rx="5" ry="3.6" fill="#D6A15A" stroke="#A9773A" stroke-width="1"/>
+<ellipse cx="535" cy="322" rx="5" ry="3.6" fill="#D6A15A" stroke="#A9773A" stroke-width="1"/>
+<path d="M478 312 L585 118" stroke="#8C5E33" stroke-width="26" stroke-linecap="round"/>
+<path d="M484 300 L584 120" stroke="#B98552" stroke-width="7" stroke-linecap="round" opacity=".8"/>
+</g>
+<g transform="rotate(-8 290 452)"><path d="M290 452 C317.3 442 352.4 446 368 462 C344.6 456 313.4 462 290 461 Z" fill="#D2352B" stroke="#9E2016" stroke-width="1.6"/><path d="M292 455 C284 452 278 446 276 438" fill="none" stroke="#3F7E2A" stroke-width="4" stroke-linecap="round"/><path d="M309.5 450 C329.0 446 344.6 449 353.96 455" fill="none" stroke="#FFFFFF" stroke-width="2" opacity=".35" stroke-linecap="round"/></g>
+<g transform="rotate(6 318 470)"><path d="M318 470 C341.1 460 370.8 464 384 480 C364.2 474 337.8 480 318 479 Z" fill="#D2352B" stroke="#9E2016" stroke-width="1.6"/><path d="M320 473 C312 470 306 464 304 456" fill="none" stroke="#3F7E2A" stroke-width="4" stroke-linecap="round"/><path d="M334.5 468 C351.0 464 364.2 467 372.12 473" fill="none" stroke="#FFFFFF" stroke-width="2" opacity=".35" stroke-linecap="round"/></g>
+<circle cx="560" cy="468" r="34" fill="#7FB53A" stroke="#5E8C24" stroke-width="2"/>
+<circle cx="560" cy="468" r="26" fill="#E3F0B0"/>
+<path d="M560 468 L585.0 468.0" stroke="#BFD878" stroke-width="2"/>
+<path d="M560 468 L577.7 485.7" stroke="#BFD878" stroke-width="2"/>
+<path d="M560 468 L560.0 493.0" stroke="#BFD878" stroke-width="2"/>
+<path d="M560 468 L542.3 485.7" stroke="#BFD878" stroke-width="2"/>
+<path d="M560 468 L535.0 468.0" stroke="#BFD878" stroke-width="2"/>
+<path d="M560 468 L542.3 450.3" stroke="#BFD878" stroke-width="2"/>
+<path d="M560 468 L560.0 443.0" stroke="#BFD878" stroke-width="2"/>
+<path d="M560 468 L577.7 450.3" stroke="#BFD878" stroke-width="2"/>
+<circle cx="560" cy="468" r="4" fill="#F4F9DF"/>
+<ellipse cx="88.1" cy="408.0" rx="10.9" ry="6.8" fill="#F29A1F" transform="rotate(0 88.1 408.0)"/>
+<ellipse cx="86.5" cy="415.0" rx="10.9" ry="6.8" fill="#F29A1F" transform="rotate(26 86.5 415.0)"/>
+<ellipse cx="82.1" cy="420.6" rx="10.9" ry="6.8" fill="#F29A1F" transform="rotate(51 82.1 420.6)"/>
+<ellipse cx="75.6" cy="423.7" rx="10.9" ry="6.8" fill="#F29A1F" transform="rotate(77 75.6 423.7)"/>
+<ellipse cx="68.4" cy="423.7" rx="10.9" ry="6.8" fill="#F29A1F" transform="rotate(103 68.4 423.7)"/>
+<ellipse cx="62.0" cy="420.6" rx="10.9" ry="6.8" fill="#F29A1F" transform="rotate(129 62.0 420.6)"/>
+<ellipse cx="57.5" cy="415.0" rx="10.9" ry="6.8" fill="#F29A1F" transform="rotate(154 57.5 415.0)"/>
+<ellipse cx="55.9" cy="408.0" rx="10.9" ry="6.8" fill="#F29A1F" transform="rotate(180 55.9 408.0)"/>
+<ellipse cx="57.5" cy="401.0" rx="10.9" ry="6.8" fill="#F29A1F" transform="rotate(206 57.5 401.0)"/>
+<ellipse cx="61.9" cy="395.4" rx="10.9" ry="6.8" fill="#F29A1F" transform="rotate(231 61.9 395.4)"/>
+<ellipse cx="68.4" cy="392.3" rx="10.9" ry="6.8" fill="#F29A1F" transform="rotate(257 68.4 392.3)"/>
+<ellipse cx="75.6" cy="392.3" rx="10.9" ry="6.8" fill="#F29A1F" transform="rotate(283 75.6 392.3)"/>
+<ellipse cx="82.0" cy="395.4" rx="10.9" ry="6.8" fill="#F29A1F" transform="rotate(309 82.0 395.4)"/>
+<ellipse cx="86.5" cy="401.0" rx="10.9" ry="6.8" fill="#F29A1F" transform="rotate(334 86.5 401.0)"/>
+<circle cx="80.9" cy="410.8" r="5.2" fill="#F7B84A"/>
+<circle cx="77.6" cy="415.5" r="5.2" fill="#F7B84A"/>
+<circle cx="72.1" cy="417.4" r="5.2" fill="#F7B84A"/>
+<circle cx="66.6" cy="415.6" r="5.2" fill="#F7B84A"/>
+<circle cx="63.1" cy="411.0" r="5.2" fill="#F7B84A"/>
+<circle cx="63.1" cy="405.2" r="5.2" fill="#F7B84A"/>
+<circle cx="66.4" cy="400.5" r="5.2" fill="#F7B84A"/>
+<circle cx="71.9" cy="398.6" r="5.2" fill="#F7B84A"/>
+<circle cx="77.4" cy="400.3" r="5.2" fill="#F7B84A"/>
+<circle cx="80.9" cy="405.0" r="5.2" fill="#F7B84A"/>
+<circle cx="72" cy="408" r="5.7" fill="#D9771A"/>
+<ellipse cx="118.4" cy="470.0" rx="8.4" ry="5.2" fill="#F29A1F" transform="rotate(0 118.4 470.0)"/>
+<ellipse cx="117.2" cy="475.4" rx="8.4" ry="5.2" fill="#F29A1F" transform="rotate(26 117.2 475.4)"/>
+<ellipse cx="113.7" cy="479.7" rx="8.4" ry="5.2" fill="#F29A1F" transform="rotate(51 113.7 479.7)"/>
+<ellipse cx="108.8" cy="482.1" rx="8.4" ry="5.2" fill="#F29A1F" transform="rotate(77 108.8 482.1)"/>
+<ellipse cx="103.2" cy="482.1" rx="8.4" ry="5.2" fill="#F29A1F" transform="rotate(103 103.2 482.1)"/>
+<ellipse cx="98.3" cy="479.7" rx="8.4" ry="5.2" fill="#F29A1F" transform="rotate(129 98.3 479.7)"/>
+<ellipse cx="94.8" cy="475.4" rx="8.4" ry="5.2" fill="#F29A1F" transform="rotate(154 94.8 475.4)"/>
+<ellipse cx="93.6" cy="470.0" rx="8.4" ry="5.2" fill="#F29A1F" transform="rotate(180 93.6 470.0)"/>
+<ellipse cx="94.8" cy="464.6" rx="8.4" ry="5.2" fill="#F29A1F" transform="rotate(206 94.8 464.6)"/>
+<ellipse cx="98.3" cy="460.3" rx="8.4" ry="5.2" fill="#F29A1F" transform="rotate(231 98.3 460.3)"/>
+<ellipse cx="103.2" cy="457.9" rx="8.4" ry="5.2" fill="#F29A1F" transform="rotate(257 103.2 457.9)"/>
+<ellipse cx="108.8" cy="457.9" rx="8.4" ry="5.2" fill="#F29A1F" transform="rotate(283 108.8 457.9)"/>
+<ellipse cx="113.7" cy="460.3" rx="8.4" ry="5.2" fill="#F29A1F" transform="rotate(309 113.7 460.3)"/>
+<ellipse cx="117.2" cy="464.6" rx="8.4" ry="5.2" fill="#F29A1F" transform="rotate(334 117.2 464.6)"/>
+<circle cx="112.9" cy="472.1" r="4.0" fill="#F7B84A"/>
+<circle cx="110.3" cy="475.8" r="4.0" fill="#F7B84A"/>
+<circle cx="106.1" cy="477.2" r="4.0" fill="#F7B84A"/>
+<circle cx="101.9" cy="475.9" r="4.0" fill="#F7B84A"/>
+<circle cx="99.2" cy="472.3" r="4.0" fill="#F7B84A"/>
+<circle cx="99.1" cy="467.9" r="4.0" fill="#F7B84A"/>
+<circle cx="101.7" cy="464.2" r="4.0" fill="#F7B84A"/>
+<circle cx="105.9" cy="462.8" r="4.0" fill="#F7B84A"/>
+<circle cx="110.1" cy="464.1" r="4.0" fill="#F7B84A"/>
+<circle cx="112.8" cy="467.7" r="4.0" fill="#F7B84A"/>
+<circle cx="106" cy="470" r="4.4" fill="#D9771A"/>
+<ellipse cx="395.2" cy="486.0" rx="7.6" ry="4.7" fill="#F29A1F" transform="rotate(0 395.2 486.0)"/>
+<ellipse cx="394.1" cy="490.8" rx="7.6" ry="4.7" fill="#F29A1F" transform="rotate(26 394.1 490.8)"/>
+<ellipse cx="391.0" cy="494.7" rx="7.6" ry="4.7" fill="#F29A1F" transform="rotate(51 391.0 494.7)"/>
+<ellipse cx="386.5" cy="496.9" rx="7.6" ry="4.7" fill="#F29A1F" transform="rotate(77 386.5 496.9)"/>
+<ellipse cx="381.5" cy="496.9" rx="7.6" ry="4.7" fill="#F29A1F" transform="rotate(103 381.5 496.9)"/>
+<ellipse cx="377.0" cy="494.7" rx="7.6" ry="4.7" fill="#F29A1F" transform="rotate(129 377.0 494.7)"/>
+<ellipse cx="373.9" cy="490.8" rx="7.6" ry="4.7" fill="#F29A1F" transform="rotate(154 373.9 490.8)"/>
+<ellipse cx="372.8" cy="486.0" rx="7.6" ry="4.7" fill="#F29A1F" transform="rotate(180 372.8 486.0)"/>
+<ellipse cx="373.9" cy="481.2" rx="7.6" ry="4.7" fill="#F29A1F" transform="rotate(206 373.9 481.2)"/>
+<ellipse cx="377.0" cy="477.3" rx="7.6" ry="4.7" fill="#F29A1F" transform="rotate(231 377.0 477.3)"/>
+<ellipse cx="381.5" cy="475.1" rx="7.6" ry="4.7" fill="#F29A1F" transform="rotate(257 381.5 475.1)"/>
+<ellipse cx="386.5" cy="475.1" rx="7.6" ry="4.7" fill="#F29A1F" transform="rotate(283 386.5 475.1)"/>
+<ellipse cx="391.0" cy="477.3" rx="7.6" ry="4.7" fill="#F29A1F" transform="rotate(309 391.0 477.3)"/>
+<ellipse cx="394.1" cy="481.2" rx="7.6" ry="4.7" fill="#F29A1F" transform="rotate(334 394.1 481.2)"/>
+<circle cx="390.2" cy="487.9" r="3.6" fill="#F7B84A"/>
+<circle cx="387.9" cy="491.2" r="3.6" fill="#F7B84A"/>
+<circle cx="384.1" cy="492.5" r="3.6" fill="#F7B84A"/>
+<circle cx="380.3" cy="491.3" r="3.6" fill="#F7B84A"/>
+<circle cx="377.9" cy="488.1" r="3.6" fill="#F7B84A"/>
+<circle cx="377.8" cy="484.1" r="3.6" fill="#F7B84A"/>
+<circle cx="380.1" cy="480.8" r="3.6" fill="#F7B84A"/>
+<circle cx="383.9" cy="479.5" r="3.6" fill="#F7B84A"/>
+<circle cx="387.7" cy="480.7" r="3.6" fill="#F7B84A"/>
+<circle cx="390.1" cy="483.9" r="3.6" fill="#F7B84A"/>
+<circle cx="384" cy="486" r="4.0" fill="#D9771A"/>
+</svg></figure>
+    </div>
+  </section>
+
+  <section class="schritte" aria-labelledby="h-schritte">
+    <div class="innen">
+      <p class="oberzeile">So einfach geht’s</p>
+      <h2 class="titel" id="h-schritte">In drei Schritten bestellt</h2>
+      <ol>
+        <li><span class="n" aria-hidden="true">1</span><h3>Gerichte wählen</h3><p>In der Karte auf «+» tippen.</p></li>
+        <li><span class="n" aria-hidden="true">2</span><h3>Abholzeit angeben</h3><p>So bald wie möglich oder später.</p></li>
+        <li><span class="n" aria-hidden="true">3</span><h3>Per SMS senden</h3><p>Die Bestellung geht direkt an Thai Isaan.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="essen" id="speisekarte" aria-labelledby="h-karte">
+    <div class="innen">
+      <div class="essen-kopf">
+        <p class="oberzeile"><span lang="th">เมนู</span> · Speisekarte</p>
+        <h2 class="titel" id="h-karte">Aus der Thai-Küche</h2>
+        <div class="notiz"><b>Entwurfsnotiz für Thai Isaan</b><span>Das ist eine Beispielkarte. Eine Speisekarte von Thai Isaan habe ich online nicht gefunden. Alle Gerichte und Preise unten sind Beispiele. Schicken Sie mir Ihre Karte oder ein Foto davon, dann stehen hier Ihre Gerichte und Ihre Preise.</span></div>
+      </div>
+      <div class="essen-raster">
+        <ul class="karten">
+<li class="gericht">
+  <span class="thai" lang="th">ปอเปี๊ยะทอด</span>
+  <h3>Por Pia Tod</h3>
+  <p>Frittierte Frühlingsrollen mit süss-scharfer Sauce</p>
+  <span class="marker">Beispiel</span>
+  <div class="zeile"><span class="preis">CHF 8.–</span><button type="button" class="plus" data-plus="g1" aria-pressed="false" aria-label="Por Pia Tod zur Bestellung hinzufügen">+</button></div>
+</li>
+<li class="gericht">
+  <span class="thai" lang="th">ต้มข่าไก่</span>
+  <h3>Tom Kha Gai</h3>
+  <p>Kokossuppe mit Poulet, Galgant und Zitronengras</p>
+  <span class="marker">Beispiel</span>
+  <div class="zeile"><span class="preis">CHF 9.50</span><button type="button" class="plus" data-plus="g2" aria-pressed="false" aria-label="Tom Kha Gai zur Bestellung hinzufügen">+</button></div>
+</li>
+<li class="gericht">
+  <span class="thai" lang="th">ส้มตำ</span>
+  <h3>Som Tam</h3>
+  <p>Scharfer Salat aus grüner Papaya</p>
+  <span class="marker">Beispiel</span>
+  <div class="zeile"><span class="preis">CHF 15.–</span><button type="button" class="plus" data-plus="g3" aria-pressed="false" aria-label="Som Tam zur Bestellung hinzufügen">+</button></div>
+</li>
+<li class="gericht">
+  <span class="thai" lang="th">ลาบไก่</span>
+  <h3>Larb Gai</h3>
+  <p>Hackfleischsalat mit Poulet, Limette und Kräutern</p>
+  <span class="marker">Beispiel</span>
+  <div class="zeile"><span class="preis">CHF 17.50</span><button type="button" class="plus" data-plus="g4" aria-pressed="false" aria-label="Larb Gai zur Bestellung hinzufügen">+</button></div>
+</li>
+<li class="gericht">
+  <span class="thai" lang="th">ผัดไทย</span>
+  <h3>Pad Thai</h3>
+  <p>Gebratene Reisnudeln mit Ei, Sprossen und Erdnüssen</p>
+  <span class="marker">Beispiel</span>
+  <div class="zeile"><span class="preis">CHF 18.50</span><button type="button" class="plus" data-plus="g5" aria-pressed="false" aria-label="Pad Thai zur Bestellung hinzufügen">+</button></div>
+</li>
+<li class="gericht">
+  <span class="thai" lang="th">แกงเขียวหวาน</span>
+  <h3>Gaeng Kiew Wan</h3>
+  <p>Grünes Curry mit Poulet, dazu Jasminreis</p>
+  <span class="marker">Beispiel</span>
+  <div class="zeile"><span class="preis">CHF 19.50</span><button type="button" class="plus" data-plus="g6" aria-pressed="false" aria-label="Gaeng Kiew Wan zur Bestellung hinzufügen">+</button></div>
+</li>
+<li class="gericht">
+  <span class="thai" lang="th">ชาเย็น</span>
+  <h3>Cha Yen</h3>
+  <p>Thailändischer Eistee mit Milch</p>
+  <span class="marker">Beispiel</span>
+  <div class="zeile"><span class="preis">CHF 5.–</span><button type="button" class="plus" data-plus="g7" aria-pressed="false" aria-label="Cha Yen zur Bestellung hinzufügen">+</button></div>
+</li>
+<li class="gericht platz">
+  <span class="thai">Entwurf</span>
+  <h3>Ihre Gerichte</h3>
+  <p>Hier kommt Ihre echte Karte hin, mit Ihren Namen, Beschreibungen und Preisen.</p>
+</li>
+        </ul>
+        <form class="tasche" id="bestellen" novalidate aria-labelledby="h-bestellen">
+          <p class="oberzeile"><span lang="th">สั่งอาหาร</span> · Bestellen</p>
+          <h2 id="h-bestellen">Ihre Bestellung</h2>
+          <ul class="posten" id="posten" aria-live="polite"><li class="leer">Noch nichts ausgewählt. Tippen Sie in der Karte auf «+».</li></ul>
+          <div class="summe" id="summe" hidden><span>Total<small>Bezahlt wird beim Abholen.</small></span><span id="total">CHF 0.–</span></div>
+          <div class="felder">
+            <div class="feld voll"><label for="f-zeit">Abholzeit</label><select id="f-zeit"><option>So bald wie möglich</option><option>In etwa 30 Minuten</option><option>In etwa einer Stunde</option><option>Später (Zeit unten angeben)</option></select></div>
+            <div class="feld"><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name" placeholder="Vor- und Nachname"></div>
+            <div class="feld"><label for="f-tel">Telefon</label><input id="f-tel" type="tel" autocomplete="tel" placeholder="079 000 00 00"></div>
+            <div class="feld voll"><label for="f-bem">Bemerkung</label><textarea id="f-bem" placeholder="z. B. mild, ohne Erdnüsse"></textarea></div>
+          </div>
+          <div class="senden"><button type="button" class="knopf knopf-gold" data-senden="sms">Per SMS senden</button><button type="button" class="knopf knopf-rand" data-senden="mail">Per E-Mail senden</button></div>
+          <div class="vorschau"><p>Vorschau: So kommt die Nachricht bei Thai Isaan an</p><pre id="vorschau"></pre></div>
+          <div class="notiz"><b>Entwurfsnotiz für Thai Isaan</b><span>Eine Bestellung käme als fertige SMS oder E-Mail bei Ihnen an, mit Gerichten, Abholzeit und Rückrufnummer. Eine kurze Antwort genügt als Bestätigung. Ohne Bestellplattform und ohne Provision. WhatsApp geht auf Wunsch auch.</span></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="ort" id="adresse" aria-labelledby="h-adresse">
+    <div class="innen">
+      <div class="kachel zeiten">
+        <p class="oberzeile"><span lang="th">เวลาเปิด</span> · Öffnungszeiten</p>
+        <h2 class="titel">Öffnungszeiten folgen</h2>
+        <ul class="tage" aria-label="Platzhalter für die Öffnungszeiten"><li><span>Mo</span><b>[Zeit]</b></li><li><span>Di</span><b>[Zeit]</b></li><li><span>Mi</span><b>[Zeit]</b></li><li><span>Do</span><b>[Zeit]</b></li><li><span>Fr</span><b>[Zeit]</b></li><li><span>Sa</span><b>[Zeit]</b></li><li><span>So</span><b>[Zeit]</b></li></ul>
+        <div class="notiz"><b>Entwurfsnotiz für Thai Isaan</b><span>Ihre Öffnungszeiten habe ich online nirgends gefunden, auch local.ch nennt keine. Sagen Sie mir, wann Sie offen haben, dann stehen sie hier, mit der Anzeige, ob gerade offen ist.</span></div>
+      </div>
+      <div class="kachel adresse">
+        <p class="oberzeile"><span lang="th">ที่อยู่</span> · Adresse</p>
+        <h2 class="titel" id="h-adresse">In Vordemwald</h2>
+        <address><strong>Thai Isaan Take Away KLG</strong><span>Langenthalerstrasse 22</span><span>4803 Vordemwald AG</span></address>
+        <div class="aktionen">
+          <a class="knopf knopf-indigo" href="tel:+41797146913">Anrufen: 079 714 69 13</a>
+          <a class="knopf knopf-rand" href="https://www.google.com/maps/search/?api=1&amp;query=Langenthalerstrasse%2022%2C%204803%20Vordemwald" target="_blank" rel="noopener">Route planen</a>
+          <a class="knopf knopf-rand" href="mailto:emil.pluess@sunrise.ch">E-Mail schreiben</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="pha" aria-hidden="true"></div>
+  <div class="innen">
+    <div class="fuss-raster">
+      <div><a class="wortmarke" href="#start">Thai Isaan <span lang="th" aria-hidden="true">อีสาน</span></a><p style="margin-top:12px">Thai Take-away in Vordemwald</p></div>
+      <div><h4>Adresse</h4><p>Langenthalerstrasse 22<br>4803 Vordemwald AG</p></div>
+      <div><h4>Kontakt</h4><p><a href="tel:+41797146913">079 714 69 13</a><br><a href="mailto:emil.pluess@sunrise.ch">emil.pluess@sunrise.ch</a></p></div>
+      <div><h4>Öffnungszeiten</h4><p>folgen</p></div>
+    </div>
+    <div class="recht"><span>© 2026 Thai Isaan Take Away KLG</span><button type="button" data-info="impressum">Impressum</button><button type="button" data-info="datenschutz">Datenschutz</button><span class="schutz">Entwurf von Webfassade · Jeton Bardhaj. Urheberrechtlich geschützt: Verwendung oder Veröffentlichung nur mit schriftlicher Zustimmung.</span></div>
+  </div>
+</footer>
+
+<nav class="handy" aria-label="Schnellzugriff"><a class="knopf knopf-rand" href="tel:+41797146913">Anrufen</a><a class="knopf knopf-gold" href="#bestellen">Bestellen <span class="zahl" data-zahl hidden>0</span></a></nav>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function () {
+  'use strict';
+  var FIRMA = 'Thai Isaan', TEL = '+41797146913', MAIL = 'emil.pluess@sunrise.ch';
+  var G = {"g1": {"name": "Por Pia Tod", "preis": 8.0}, "g2": {"name": "Tom Kha Gai", "preis": 9.5}, "g3": {"name": "Som Tam", "preis": 15.0}, "g4": {"name": "Larb Gai", "preis": 17.5}, "g5": {"name": "Pad Thai", "preis": 18.5}, "g6": {"name": "Gaeng Kiew Wan", "preis": 19.5}, "g7": {"name": "Cha Yen", "preis": 5.0}};
+  var INFO = {
+    impressum: 'Impressum: Hier stehen später Thai Isaan Take Away KLG, Adresse, die verantwortlichen Personen und die UID. Die Angaben ergänze ich mit Ihnen.',
+    datenschutz: 'Datenschutz: Bevor die Seite online geht, kommt hier eine Datenschutzerklärung nach Schweizer Recht (revDSG) hin.'
+  };
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var chf = function (n) { var r = Math.round(n * 100) / 100; return Number.isInteger(r) ? r + '.–' : r.toFixed(2); };
+  var sanft = function () { return window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'; };
+  var korb = {};
+  function eintraege() { return Object.keys(G).filter(function (id) { return korb[id] > 0; }).map(function (id) { return [id, korb[id]]; }); }
+  function total(e) { return e.reduce(function (s, x) { return s + G[x[0]].preis * x[1]; }, 0); }
+  function nachricht() {
+    var e = eintraege(), L = ['Vorbestellung – ' + FIRMA, ''];
+    if (!e.length) L.push('(noch nichts ausgewählt)');
+    e.forEach(function (x) { L.push(x[1] + '× ' + G[x[0]].name + ' (' + chf(G[x[0]].preis * x[1]) + ')'); });
+    if (e.length) L.push('Total: CHF ' + chf(total(e)));
+    L.push('', 'Abholzeit: ' + $('#f-zeit').value, 'Name: ' + ($('#f-name').value.trim() || '–'));
+    var tel = $('#f-tel').value.trim(), bem = $('#f-bem').value.trim();
+    if (tel) L.push('Telefon: ' + tel);
+    if (bem) L.push('Bemerkung: ' + bem);
+    return L.join('\n');
+  }
+  function zeichne() {
+    var e = eintraege();
+    $('#posten').innerHTML = e.length ? e.map(function (x) {
+      var n = esc(G[x[0]].name);
+      return '<li><span class="name">' + n + '</span><span class="menge"><button type="button" data-menge="' + x[0] + '" data-d="-1" aria-label="' + n + ': eins weniger">−</button><span>' + x[1] + '</span><button type="button" data-menge="' + x[0] + '" data-d="1" aria-label="' + n + ': eins mehr">+</button></span><span class="betrag">' + chf(G[x[0]].preis * x[1]) + '</span></li>';
+    }).join('') : '<li class="leer">Noch nichts ausgewählt. Tippen Sie in der Karte auf «+».</li>';
+    $('#summe').hidden = !e.length;
+    $('#total').textContent = 'CHF ' + chf(total(e));
+    var anzahl = e.reduce(function (s, x) { return s + x[1]; }, 0);
+    $$('[data-zahl]').forEach(function (z) { z.hidden = !anzahl; z.textContent = anzahl; });
+    $$('[data-plus]').forEach(function (b) {
+      var q = korb[b.getAttribute('data-plus')] || 0;
+      b.setAttribute('aria-pressed', String(q > 0));
+      b.innerHTML = '+' + (q ? '<span class="anz" aria-hidden="true">' + q + '</span>' : '');
+    });
+    $('#vorschau').textContent = nachricht();
+  }
+  var toastZeit;
+  function toast(t) { var el = $('#toast'); el.textContent = t; el.hidden = false; clearTimeout(toastZeit); toastZeit = setTimeout(function () { el.hidden = true; }, 4200); }
+  function senden(kanal) {
+    if (!eintraege().length) { toast('Noch nichts ausgewählt. Tippen Sie in der Karte auf «+».'); $('#speisekarte').scrollIntoView({ behavior: sanft(), block: 'start' }); return; }
+    var text = nachricht();
+    window.location.href = kanal === 'sms'
+      ? 'sms:' + TEL + '?&body=' + encodeURIComponent(text)
+      : 'mailto:' + MAIL + '?subject=' + encodeURIComponent('Vorbestellung – ' + FIRMA) + '&body=' + encodeURIComponent(text);
+  }
+  document.addEventListener('click', function (ev) {
+    var t = ev.target, b;
+    if ((b = t.closest('[data-plus]'))) { var id = b.getAttribute('data-plus'); korb[id] = (korb[id] || 0) + 1; zeichne(); toast(korb[id] + '× ' + G[id].name + ' in Ihrer Bestellung.'); return; }
+    if ((b = t.closest('[data-menge]'))) {
+      var mid = b.getAttribute('data-menge'), d = b.getAttribute('data-d');
+      korb[mid] = Math.max(0, (korb[mid] || 0) + Number(d)); zeichne();
+      var neu = $('[data-menge="' + mid + '"][data-d="' + d + '"]'); if (neu) neu.focus();
+      return;
+    }
+    if ((b = t.closest('[data-senden]'))) { senden(b.getAttribute('data-senden')); return; }
+    if ((b = t.closest('[data-info]'))) { toast(INFO[b.getAttribute('data-info')]); }
+  });
+  ['input', 'change'].forEach(function (typ) { document.addEventListener(typ, function (ev) { if (ev.target.closest('#bestellen')) $('#vorschau').textContent = nachricht(); }); });
+  $('#bestellen').addEventListener('submit', function (ev) { ev.preventDefault(); });
+  document.title = FIRMA + ' · Entwurf';
+  zeichne();
+})();
+</script>
+
+</body>
+</html>

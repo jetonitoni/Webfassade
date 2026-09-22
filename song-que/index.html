@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Song Que – Vietnamesisches Take Away</title>
+<meta name="description" content="Song Que – vietnamesisches Take-away an der Marktgasse 34B in Langenthal. Speisekarte, Öffnungszeiten und Vorbestellung per SMS oder E-Mail.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Big+Shoulders+Display:wght@800;900&display=swap">
+<style>
+/* Song Que · Entwurf von Webfassade
+   Idee: ein Saigoner Ladenschild, eine dampfende Schale Phở Bò von oben,
+   Bänder aus Zementfliesen (gạch bông) und eine grüne Menütafel. */
+:root{
+  --reis:#F5EEDF; --reis-2:#EADFC8; --papier:#FFFCF6;
+  --tinte:#1C2622; --tinte-2:#55635C;
+  --jade:#0F5446; --jade-2:#0A3B31; --jade-hell:#DDEAE1;
+  --chili:#B5312A; --chili-2:#8F2520; --safran:#F1B434; --creme:#F4EBD6;
+  --blau:#2B4B8C;
+  --linie:rgba(28,38,34,.16);
+  --schild:'Big Shoulders Display','Arial Narrow','Helvetica Neue',Impact,sans-serif;
+  --text:'Be Vietnam Pro',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--reis);color:var(--tinte);font:400 17px/1.6 var(--text);overflow-x:clip}
+a{color:inherit}
+svg{max-width:100%}
+:focus-visible{outline:3px solid var(--chili);outline-offset:3px}
+h1,h2,h3,h4{margin:0;line-height:1.1;text-wrap:balance}
+p{margin:0}
+button{font:inherit;color:inherit}
+[id]{scroll-margin-top:84px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.innen{width:100%;max-width:1160px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+
+.entwurf{background:var(--jade-2);color:var(--creme);font:500 13px/1.45 var(--text);text-align:center;padding:9px 16px;text-wrap:balance}
+.entwurf b{font-weight:800;color:var(--safran)}
+
+.kopf{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(245,238,223,.95);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--linie)}
+.kopf .innen{display:flex;align-items:center;gap:20px;min-height:66px}
+.marke{display:inline-flex;align-items:center;background:var(--chili);color:var(--safran);font:900 22px/1 var(--schild);letter-spacing:.05em;text-transform:uppercase;padding:9px 13px 8px;border-radius:4px;box-shadow:inset 0 0 0 3px var(--chili),inset 0 0 0 4.5px var(--safran);text-decoration:none;white-space:nowrap}
+.navi{display:flex;gap:26px;margin-left:auto}
+.navi a{text-decoration:none;font-weight:600;font-size:15px;line-height:1.2;color:var(--tinte)}
+.navi a:hover{color:var(--chili)}
+.navi small{display:block;font-size:12px;font-weight:500;color:var(--jade)}
+.knopf{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:50px;padding:0 22px;border-radius:999px;border:2px solid transparent;font:700 16px/1 var(--text);text-decoration:none;cursor:pointer;transition:transform .15s ease,background-color .15s ease,color .15s ease}
+.knopf:hover{transform:translateY(-1px)}
+.knopf:active{transform:translateY(1px)}
+.knopf-rot{background:var(--chili);color:#FFF4DC}
+.knopf-rot:hover{background:var(--chili-2)}
+.knopf-linie{border-color:currentColor;background:transparent;color:var(--tinte)}
+.knopf-linie:hover{background:var(--tinte);color:var(--reis);border-color:var(--tinte)}
+.kopf .knopf{min-height:44px;padding:0 18px;font-size:15px}
+.zahl{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--safran);color:var(--tinte);font-size:12px;font-weight:800}
+.zahl[hidden]{display:none}
+@media (max-width:860px){.navi{display:none}.kopf .knopf{margin-left:auto}}
+
+.hero{padding-block:clamp(28px,5vw,64px) clamp(40px,6vw,76px)}
+.hero .innen{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);grid-template-areas:"kopf bild" "rest bild";column-gap:clamp(24px,4vw,56px);align-items:center}
+.hero-kopf{grid-area:kopf;align-self:end}
+.hero-rest{grid-area:rest;align-self:start}
+.bild{grid-area:bild}
+.gruss{font:700 13px/1.3 var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--jade)}
+.gruss span{color:var(--chili)}
+.schild{display:inline-grid;justify-items:center;gap:8px;margin-top:16px;background:var(--chili);color:var(--safran);padding:.17em .34em .24em;border-radius:8px;box-shadow:inset 0 0 0 7px var(--chili),inset 0 0 0 10px var(--safran),0 16px 30px -18px rgba(70,20,10,.75);font:900 clamp(66px,12vw,128px)/.84 var(--schild);letter-spacing:.02em;text-transform:uppercase;text-shadow:0 3px 0 #7A1E18}
+.schild small{font:800 clamp(12px,1.4vw,15px)/1 var(--text);letter-spacing:.2em;color:#FFF1CF;text-shadow:none;padding-bottom:.35em}
+.claim{margin-top:24px;font:800 clamp(24px,2.8vw,32px)/1.2 var(--text);max-width:22ch}
+.intro{margin-top:12px;color:var(--tinte-2);font-size:18px;max-width:46ch}
+.aktionen{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.status{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;background:var(--papier);border:1px solid var(--linie);font-weight:600;font-size:15px}
+.hero .status{margin-top:22px}
+.status i{flex:none;width:10px;height:10px;border-radius:50%;background:#8C958F;box-shadow:0 0 0 4px rgba(140,149,143,.22)}
+.status.offen i{background:#1E8A4C;box-shadow:0 0 0 4px rgba(30,138,76,.2)}
+.kurz{display:flex;flex-wrap:wrap;gap:12px 30px;margin:24px 0 0;padding:18px 0 0;border-top:1px solid var(--linie);list-style:none}
+.kurz li{display:grid;gap:2px}
+.kurz .k{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--jade)}
+.kurz .v{font-weight:700;font-variant-numeric:tabular-nums}
+.bild{position:relative;margin:0}
+.schale{display:block;width:100%;height:auto}
+.dampf{animation:dampf 5.5s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+.dampf.d2{animation-delay:-1.8s}
+.dampf.d3{animation-delay:-3.6s}
+@keyframes dampf{0%{opacity:0;transform:translateY(14px)}35%{opacity:.55}100%{opacity:0;transform:translateY(-24px)}}
+.etikett{position:absolute;left:0;top:3%;background:var(--papier);border:2px solid var(--tinte);border-radius:6px;padding:8px 12px;box-shadow:4px 4px 0 var(--tinte);transform:rotate(-4deg);display:grid;gap:2px;max-width:62%}
+.etikett b{font:800 21px/1.1 var(--text);color:var(--chili)}
+.etikett span{font-size:13px;line-height:1.35;color:var(--tinte-2)}
+@media (max-width:860px){.hero .innen{grid-template-columns:minmax(0,1fr);grid-template-areas:"kopf" "bild" "rest"}.bild{max-width:420px;width:92%;justify-self:center;margin-top:18px}}
+
+.fliesen{height:48px;background-color:var(--reis);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E %3Crect width='72' height='72' fill='%23F5EEDF'/%3E %3Cg fill='%230F5446'%3E%3Cpath d='M0 0H18A18 18 0 0 1 0 18Z'/%3E%3Cpath d='M72 0V18A18 18 0 0 1 54 0Z'/%3E%3Cpath d='M72 72H54A18 18 0 0 1 72 54Z'/%3E%3Cpath d='M0 72V54A18 18 0 0 1 18 72Z'/%3E%3C/g%3E %3Cg fill='%23F1B434'%3E%3Cpath d='M29 0A7 7 0 0 0 43 0Z'/%3E%3Cpath d='M29 72A7 7 0 0 1 43 72Z'/%3E%3Cpath d='M0 29A7 7 0 0 1 0 43Z'/%3E%3Cpath d='M72 29A7 7 0 0 0 72 43Z'/%3E%3C/g%3E %3Cpolygon points='36,13 59,36 36,59 13,36' fill='none' stroke='%230F5446' stroke-width='2.2'/%3E %3Cg fill='%23B5312A'%3E%3Cellipse cx='36' cy='26' rx='4.6' ry='8.5'/%3E%3Cellipse cx='36' cy='46' rx='4.6' ry='8.5'/%3E%3Cellipse cx='26' cy='36' rx='8.5' ry='4.6'/%3E%3Cellipse cx='46' cy='36' rx='8.5' ry='4.6'/%3E%3C/g%3E %3Ccircle cx='36' cy='36' r='4' fill='%23F1B434'/%3E %3C/svg%3E");background-size:48px 48px;border-block:4px solid var(--jade)}
+
+.oberzeile{font:700 13px/1.3 var(--text);letter-spacing:.16em;text-transform:uppercase}
+.titel{font:800 clamp(32px,4.6vw,52px)/1.08 var(--text);margin-top:10px}
+.notiz{display:grid;gap:6px;padding:14px 16px;border:1.5px dashed currentColor;border-radius:10px;font-size:15px;line-height:1.5}
+.notiz b{font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+
+.karte{background:var(--jade);color:var(--creme);padding-block:clamp(56px,8vw,96px)}
+.karte .oberzeile{color:var(--safran)}
+.karte-kopf{display:grid;gap:16px;max-width:760px;margin-bottom:30px}
+.karte-kopf > p{color:rgba(244,235,214,.86);max-width:60ch}
+.karte .notiz{color:var(--creme);background:rgba(0,0,0,.14)}
+.gerichte{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.gericht{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:start;padding:18px 0;border-top:1px dashed rgba(244,235,214,.3)}
+.nr{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--safran);color:var(--jade-2);font:900 18px/1 var(--schild)}
+.gericht h3{font:800 21px/1.2 var(--text)}
+.gericht p{color:rgba(244,235,214,.84);font-size:15px;margin-top:3px}
+.marker{display:inline-block;margin-top:8px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border:1px dashed rgba(244,235,214,.6);border-radius:999px;color:rgba(244,235,214,.9)}
+.marker.echt{border-style:solid;border-color:var(--safran);color:var(--safran)}
+.preis-spalte{display:grid;justify-items:end;gap:10px}
+.preis{font:900 23px/1 var(--schild);color:var(--safran);font-variant-numeric:tabular-nums;white-space:nowrap}
+.plus{position:relative;width:42px;height:42px;border-radius:50%;border:2px solid var(--creme);background:transparent;color:var(--creme);font:700 22px/1 var(--text);cursor:pointer;display:grid;place-items:center;transition:background-color .15s,color .15s}
+.plus:hover{background:var(--creme);color:var(--jade)}
+.plus[aria-pressed="true"]{background:var(--safran);border-color:var(--safran);color:var(--jade-2)}
+.plus .anz{position:absolute;top:-7px;right:-7px;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:var(--chili);color:#fff;font-size:11px;display:grid;place-items:center}
+@media (max-width:760px){.gerichte{grid-template-columns:1fr}}
+
+.bestellen{padding-block:clamp(56px,8vw,96px)}
+.bestellen .innen{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,64px);align-items:start}
+.bestellen .oberzeile{color:var(--chili)}
+.bestellen .titel{color:var(--jade)}
+.bestellen .text{display:grid;gap:18px;align-content:start}
+.bestellen .text > p{color:var(--tinte-2);max-width:52ch}
+.bestellen .notiz{color:var(--tinte);background:var(--papier)}
+.zettel{min-width:0;grid-template-columns:minmax(0,1fr);background-color:var(--papier);background-image:repeating-linear-gradient(transparent 0 35px,rgba(43,75,140,.09) 35px 36px);border-top:10px solid var(--chili);border-radius:4px;box-shadow:0 1px 0 var(--linie),0 26px 50px -30px rgba(40,25,10,.55);padding:clamp(18px,3vw,30px);display:grid;gap:16px}
+.zettel-kopf{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px;padding-bottom:10px;border-bottom:2px solid var(--tinte)}
+.zettel-kopf h3{font:900 clamp(22px,6vw,28px)/1 var(--schild);letter-spacing:.04em;text-transform:uppercase;color:var(--chili)}
+.zettel-kopf span{font-size:13px;color:var(--tinte-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.posten{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.posten li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;align-items:center}
+.posten li.leer{display:block;color:var(--tinte-2);font-size:15px}
+.posten .name{font-weight:700;line-height:1.3}
+.menge{display:inline-flex;align-items:center;border:1px solid rgba(28,38,34,.25);border-radius:999px;background:#fff}
+.menge button{width:34px;height:34px;border:0;background:transparent;font-size:18px;font-weight:700;cursor:pointer;border-radius:999px}
+.menge span{min-width:18px;text-align:center;font-weight:800;font-variant-numeric:tabular-nums}
+.betrag{font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.summe{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-top:10px;border-top:1px dashed rgba(28,38,34,.3);font-weight:800;font-variant-numeric:tabular-nums}
+.summe small{display:block;font-weight:400;font-size:13px;color:var(--tinte-2)}
+.summe[hidden]{display:none}
+.felder{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.feld{display:grid;gap:5px;min-width:0}
+.feld.voll{grid-column:1/-1}
+.feld label{font-size:13px;font-weight:700;color:var(--tinte-2)}
+.feld input,.feld select,.feld textarea{width:100%;min-height:48px;padding:10px 12px;border:1px solid rgba(28,38,34,.28);border-radius:6px;background:#fff;color:var(--tinte);font:400 16px/1.35 var(--text)}
+.feld textarea{min-height:80px;resize:vertical}
+@media (max-width:520px){.felder{grid-template-columns:1fr}}
+.senden{display:flex;flex-wrap:wrap;gap:10px}
+.senden .knopf{flex:1 1 180px}
+.vorschau{display:grid;gap:6px}
+.vorschau p{font-size:13px;font-weight:700;color:var(--tinte-2)}
+.vorschau pre{margin:0;padding:12px 14px;border-radius:12px 12px 12px 3px;background:var(--jade-hell);font:400 14px/1.5 ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-word;max-height:240px;overflow:auto}
+@media (max-width:900px){.bestellen .innen{grid-template-columns:1fr}}
+
+.besuch{padding-block:clamp(56px,8vw,96px);background:var(--reis-2)}
+.besuch .innen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,5vw,72px);align-items:start}
+.besuch .oberzeile{color:var(--jade)}
+.besuch .titel{margin-bottom:18px}
+.zeiten{width:100%;border-collapse:collapse;margin-top:18px;font-variant-numeric:tabular-nums}
+.zeiten th{text-align:left;font-weight:600;padding:11px 0}
+.zeiten td{text-align:right;padding:11px 0;font-weight:600;white-space:nowrap}
+.zeiten tr{border-top:1px solid var(--linie)}
+.zeiten tr:last-child{border-bottom:1px solid var(--linie)}
+.zeiten tr.heute th,.zeiten tr.heute td{color:var(--chili);font-weight:800}
+.besuch .notiz{margin-top:20px;color:var(--tinte);background:var(--papier)}
+.adresse{display:grid;gap:22px;align-content:start}
+.tafeln{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.strassenschild,.hausnummer{background:var(--blau);color:#fff;box-shadow:inset 0 0 0 4px var(--blau),inset 0 0 0 6px #fff,0 10px 20px -14px rgba(20,30,60,.7)}
+.strassenschild{font:700 clamp(24px,3vw,32px)/1 var(--text);padding:14px 20px;border-radius:6px}
+.hausnummer{font:800 clamp(36px,4.4vw,48px)/1 var(--text);padding:10px 18px;border-radius:12px;font-variant-numeric:tabular-nums}
+address{font-style:normal;display:grid;gap:2px;font-size:18px}
+address strong{font-weight:800}
+.adresse .aktionen{margin-top:0}
+@media (max-width:860px){.besuch .innen{grid-template-columns:1fr}}
+
+.fuss{background:var(--jade-2);color:#EFE6D2;padding-bottom:40px}
+.fuss .fliesen{border-top:0}
+.fuss-raster{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));padding-top:44px}
+.fuss h4{margin:0 0 8px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--safran)}
+.fuss p{font-size:15px;line-height:1.65}
+.fuss .marke{font-size:20px}
+.recht{margin-top:36px;padding-top:16px;border-top:1px solid rgba(239,230,210,.2);display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px}
+.recht button{background:none;border:0;padding:0;color:inherit;text-decoration:underline;cursor:pointer;font-size:13px}
+.schutz{flex-basis:100%;opacity:.8}
+
+.handy{display:none}
+@media (max-width:760px){
+  .handy{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(10,59,49,.97)}
+  .handy .knopf{min-height:48px;padding:0 12px}
+  .handy .knopf-linie{color:var(--creme)}
+  .handy .knopf-linie:hover{background:var(--creme);color:var(--jade-2);border-color:var(--creme)}
+  body{padding-bottom:calc(70px + env(safe-area-inset-bottom,0px))}
+}
+.toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;width:max-content;max-width:calc(100vw - 32px);padding:12px 16px;border-radius:12px;background:var(--tinte);color:#fff;font-size:14px;line-height:1.45;box-shadow:0 14px 30px -12px rgba(0,0,0,.5)}
+.toast[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="entwurf"><b>Unverbindlicher Entwurf</b> für Song Que, gestaltet von Webfassade · Jeton Bardhaj. Noch nicht die offizielle Website des Betriebs. Urheberrechtlich geschützt.</div>
+
+<header class="kopf">
+  <div class="innen">
+    <a class="marke" href="#start" aria-label="Song Que, zum Seitenanfang">Song Que</a>
+    <nav class="navi" aria-label="Hauptnavigation">
+      <a href="#speisekarte">Speisekarte<small>Thực đơn</small></a>
+      <a href="#vorbestellen">Vorbestellen<small>Đặt món</small></a>
+      <a href="#oeffnungszeiten">Öffnungszeiten<small>Giờ mở cửa</small></a>
+    </nav>
+    <a class="knopf knopf-rot" href="#vorbestellen">Vorbestellen <span class="zahl" data-zahl hidden>0</span></a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="start" aria-labelledby="h-start">
+    <div class="innen">
+      <div class="hero-kopf">
+        <p class="gruss"><span>Xin chào</span> · Willkommen an der Marktgasse</p>
+        <h1 class="schild" id="h-start">Song Que<small>Vietnamesisches Take-away</small></h1>
+      </div>
+      <div class="hero-rest">
+        <p class="claim">Vietnamesische Küche zum Mitnehmen, mitten in Langenthal.</p>
+        <p class="intro">Hier auf der Seite Gerichte auswählen, vorbestellen und an der Marktgasse 34B abholen.</p>
+        <div class="aktionen">
+          <a class="knopf knopf-rot" href="#vorbestellen">Vorbestellen</a>
+          <a class="knopf knopf-linie" href="#speisekarte">Speisekarte ansehen</a>
+        </div>
+        <p class="status" data-status><i aria-hidden="true"></i><span>Öffnungszeiten siehe unten</span></p>
+        <ul class="kurz">
+          <li><span class="k">Küche</span><span class="v">Vietnamesisch</span></li>
+          <li><span class="k">Montag</span><span class="v">17.00–21.00</span></li>
+          <li><span class="k">Dienstag–Sonntag</span><span class="v">11.30–21.00</span></li>
+        </ul>
+      </div>
+      <figure class="bild">
+        <svg class="schale" viewBox="0 0 600 600" role="img" aria-label="Eine Schale Phở Bò von oben: Brühe, Reisnudeln, Rindfleisch, Kräuter, Limette und Chili">
+<defs>
+<radialGradient id="sq-bruehe" cx="44%" cy="40%" r="62%"><stop offset="0" stop-color="#E9B368"/><stop offset=".55" stop-color="#CB8537"/><stop offset="1" stop-color="#9A5620"/></radialGradient>
+<radialGradient id="sq-schatten" cx="50%" cy="50%" r="50%"><stop offset=".78" stop-color="#2A1C0F" stop-opacity=".30"/><stop offset="1" stop-color="#2A1C0F" stop-opacity="0"/></radialGradient>
+<radialGradient id="sq-keramik" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E9E1D1"/></radialGradient>
+<clipPath id="sq-brueheclip"><circle cx="300" cy="300" r="205"/></clipPath>
+</defs>
+<circle cx="312" cy="322" r="276" fill="url(#sq-schatten)"/>
+<circle cx="300" cy="300" r="252" fill="url(#sq-keramik)" stroke="#D5CBB8" stroke-width="2"/>
+<circle cx="300" cy="300" r="240" fill="none" stroke="#2B4B8C" stroke-width="12"/>
+<circle cx="300" cy="300" r="240" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-dasharray="7 9" opacity=".9"/>
+<circle cx="549.0" cy="300.0" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="547.6" cy="326.0" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="543.6" cy="351.8" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="536.8" cy="376.9" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="527.5" cy="401.3" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="515.6" cy="424.5" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="501.4" cy="446.4" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="485.0" cy="466.6" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="466.6" cy="485.0" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="446.4" cy="501.4" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="424.5" cy="515.6" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="401.3" cy="527.5" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="376.9" cy="536.8" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="351.8" cy="543.6" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="326.0" cy="547.6" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="300.0" cy="549.0" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="274.0" cy="547.6" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="248.2" cy="543.6" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="223.1" cy="536.8" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="198.7" cy="527.5" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="175.5" cy="515.6" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="153.6" cy="501.4" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="133.4" cy="485.0" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="115.0" cy="466.6" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="98.6" cy="446.4" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="84.4" cy="424.5" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="72.5" cy="401.3" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="63.2" cy="376.9" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="56.4" cy="351.8" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="52.4" cy="326.0" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="51.0" cy="300.0" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="52.4" cy="274.0" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="56.4" cy="248.2" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="63.2" cy="223.1" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="72.5" cy="198.7" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="84.4" cy="175.5" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="98.6" cy="153.6" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="115.0" cy="133.4" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="133.4" cy="115.0" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="153.6" cy="98.6" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="175.5" cy="84.4" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="198.7" cy="72.5" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="223.1" cy="63.2" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="248.2" cy="56.4" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="274.0" cy="52.4" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="300.0" cy="51.0" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="326.0" cy="52.4" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="351.8" cy="56.4" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="376.9" cy="63.2" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="401.3" cy="72.5" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="424.5" cy="84.4" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="446.4" cy="98.6" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="466.6" cy="115.0" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="485.0" cy="133.4" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="501.4" cy="153.6" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="515.6" cy="175.5" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="527.5" cy="198.7" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="536.8" cy="223.1" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="543.6" cy="248.2" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="547.6" cy="274.0" r="1.6" fill="#2B4B8C" opacity=".55"/>
+<circle cx="300" cy="300" r="227" fill="#F2ECDF" stroke="#2B4B8C" stroke-width="2"/>
+<circle cx="300" cy="300" r="206" fill="url(#sq-bruehe)"/>
+<g clip-path="url(#sq-brueheclip)">
+<ellipse cx="233.8" cy="267.1" rx="2.2" ry="1.8" fill="#F7D08A" opacity="0.35"/>
+<ellipse cx="175.8" cy="190.4" rx="3.8" ry="3.1" fill="#F7D08A" opacity="0.50"/>
+<ellipse cx="172.5" cy="167.6" rx="5.4" ry="4.3" fill="#F7D08A" opacity="0.37"/>
+<ellipse cx="236.8" cy="260.2" rx="4.2" ry="3.3" fill="#F7D08A" opacity="0.59"/>
+<ellipse cx="163.3" cy="360.5" rx="5.7" ry="4.6" fill="#F7D08A" opacity="0.53"/>
+<ellipse cx="290.5" cy="382.0" rx="6.8" ry="5.5" fill="#F7D08A" opacity="0.54"/>
+<ellipse cx="149.5" cy="342.7" rx="7.5" ry="6.0" fill="#F7D08A" opacity="0.52"/>
+<ellipse cx="188.3" cy="429.2" rx="3.9" ry="3.1" fill="#F7D08A" opacity="0.53"/>
+<ellipse cx="174.3" cy="441.3" rx="4.6" ry="3.6" fill="#F7D08A" opacity="0.48"/>
+<ellipse cx="482.7" cy="247.1" rx="3.6" ry="2.9" fill="#F7D08A" opacity="0.60"/>
+<ellipse cx="151.3" cy="257.2" rx="4.9" ry="3.9" fill="#F7D08A" opacity="0.43"/>
+<ellipse cx="126.7" cy="321.2" rx="2.9" ry="2.3" fill="#F7D08A" opacity="0.44"/>
+<ellipse cx="427.1" cy="227.9" rx="3.0" ry="2.4" fill="#F7D08A" opacity="0.63"/>
+<ellipse cx="303.3" cy="127.9" rx="3.6" ry="2.9" fill="#F7D08A" opacity="0.31"/>
+<ellipse cx="144.7" cy="386.7" rx="2.5" ry="2.0" fill="#F7D08A" opacity="0.62"/>
+<ellipse cx="106.7" cy="325.2" rx="4.0" ry="3.2" fill="#F7D08A" opacity="0.38"/>
+<ellipse cx="354.0" cy="223.1" rx="7.9" ry="6.3" fill="#F7D08A" opacity="0.57"/>
+<ellipse cx="345.5" cy="230.1" rx="3.1" ry="2.5" fill="#F7D08A" opacity="0.32"/>
+<ellipse cx="292.2" cy="251.0" rx="4.6" ry="3.7" fill="#F7D08A" opacity="0.53"/>
+<ellipse cx="337.3" cy="391.8" rx="7.9" ry="6.3" fill="#F7D08A" opacity="0.34"/>
+<ellipse cx="198.9" cy="344.4" rx="4.3" ry="3.4" fill="#F7D08A" opacity="0.66"/>
+<ellipse cx="322.5" cy="336.4" rx="4.3" ry="3.4" fill="#F7D08A" opacity="0.56"/>
+<ellipse cx="148.0" cy="284.7" rx="4.7" ry="3.8" fill="#F7D08A" opacity="0.35"/>
+<ellipse cx="392.5" cy="305.8" rx="4.8" ry="3.8" fill="#F7D08A" opacity="0.31"/>
+<ellipse cx="207.6" cy="183.4" rx="2.5" ry="2.0" fill="#F7D08A" opacity="0.32"/>
+<ellipse cx="281.9" cy="280.5" rx="6.9" ry="5.6" fill="#F7D08A" opacity="0.69"/>
+<ellipse cx="437.9" cy="244.7" rx="5.6" ry="4.5" fill="#F7D08A" opacity="0.51"/>
+<ellipse cx="363.7" cy="147.3" rx="3.7" ry="3.0" fill="#F7D08A" opacity="0.55"/>
+<ellipse cx="162.3" cy="366.8" rx="4.2" ry="3.3" fill="#F7D08A" opacity="0.50"/>
+<ellipse cx="377.5" cy="138.3" rx="7.0" ry="5.6" fill="#F7D08A" opacity="0.46"/>
+<ellipse cx="310.4" cy="222.8" rx="6.7" ry="5.4" fill="#F7D08A" opacity="0.70"/>
+<ellipse cx="224.5" cy="313.3" rx="7.2" ry="5.8" fill="#F7D08A" opacity="0.55"/>
+<ellipse cx="346.8" cy="343.8" rx="5.1" ry="4.1" fill="#F7D08A" opacity="0.54"/>
+<ellipse cx="454.9" cy="359.7" rx="4.5" ry="3.6" fill="#F7D08A" opacity="0.65"/>
+<ellipse cx="160.5" cy="330.4" rx="6.4" ry="5.1" fill="#F7D08A" opacity="0.56"/>
+<ellipse cx="290.0" cy="462.2" rx="5.6" ry="4.5" fill="#F7D08A" opacity="0.48"/>
+<ellipse cx="379.1" cy="178.9" rx="8.0" ry="6.4" fill="#F7D08A" opacity="0.51"/>
+<ellipse cx="348.6" cy="241.5" rx="7.6" ry="6.1" fill="#F7D08A" opacity="0.34"/>
+<ellipse cx="219.2" cy="129.6" rx="2.3" ry="1.8" fill="#F7D08A" opacity="0.40"/>
+<ellipse cx="310.5" cy="255.6" rx="5.3" ry="4.3" fill="#F7D08A" opacity="0.55"/>
+<ellipse cx="344.5" cy="129.8" rx="4.4" ry="3.5" fill="#F7D08A" opacity="0.45"/>
+<ellipse cx="230.3" cy="185.2" rx="3.1" ry="2.5" fill="#F7D08A" opacity="0.42"/>
+<ellipse cx="298.4" cy="378.7" rx="7.9" ry="6.3" fill="#F7D08A" opacity="0.55"/>
+<ellipse cx="174.7" cy="233.9" rx="2.5" ry="2.0" fill="#F7D08A" opacity="0.59"/>
+<ellipse cx="442.6" cy="173.8" rx="7.7" ry="6.1" fill="#F7D08A" opacity="0.38"/>
+<ellipse cx="341.2" cy="114.3" rx="5.0" ry="4.0" fill="#F7D08A" opacity="0.51"/>
+<ellipse cx="338.3" cy="407.4" rx="6.1" ry="4.9" fill="#F7D08A" opacity="0.60"/>
+<ellipse cx="288.7" cy="307.7" rx="6.6" ry="5.3" fill="#F7D08A" opacity="0.54"/>
+<ellipse cx="371.9" cy="425.2" rx="6.4" ry="5.1" fill="#F7D08A" opacity="0.68"/>
+<ellipse cx="224.6" cy="398.2" rx="2.3" ry="1.8" fill="#F7D08A" opacity="0.59"/>
+<ellipse cx="289.5" cy="401.1" rx="7.0" ry="5.6" fill="#F7D08A" opacity="0.69"/>
+<ellipse cx="338.8" cy="182.4" rx="5.5" ry="4.4" fill="#F7D08A" opacity="0.38"/>
+<ellipse cx="269.7" cy="449.9" rx="3.7" ry="3.0" fill="#F7D08A" opacity="0.51"/>
+<ellipse cx="486.9" cy="253.8" rx="6.8" ry="5.4" fill="#F7D08A" opacity="0.59"/>
+<ellipse cx="355.9" cy="272.3" rx="4.8" ry="3.8" fill="#F7D08A" opacity="0.54"/>
+<path d="M152.0 288.6 C157.6 288.1 174.7 286.2 186.0 285.4 C197.3 284.7 209.0 281.0 219.7 284.0 C230.5 287.0 239.7 300.9 250.6 303.2 C261.5 305.5 273.7 298.4 284.9 297.7 C296.2 297.0 307.6 295.7 318.3 299.0 C329.1 302.3 338.4 315.6 349.3 317.4 C360.2 319.3 372.6 310.7 383.9 310.1 C395.2 309.6 411.4 313.5 416.9 314.2" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M152.0 288.6 C157.6 288.1 174.7 286.2 186.0 285.4 C197.3 284.7 209.0 281.0 219.7 284.0 C230.5 287.0 239.7 300.9 250.6 303.2 C261.5 305.5 273.7 298.4 284.9 297.7 C296.2 297.0 307.6 295.7 318.3 299.0 C329.1 302.3 338.4 315.6 349.3 317.4 C360.2 319.3 372.6 310.7 383.9 310.1 C395.2 309.6 411.4 313.5 416.9 314.2" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M134.2 289.3 C138.4 290.8 151.7 298.1 159.4 298.6 C167.1 299.1 174.0 296.7 180.3 292.3 C186.7 287.9 190.5 273.9 197.5 272.0 C204.5 270.1 214.8 280.2 222.6 280.7 C230.3 281.3 237.5 279.9 243.8 275.6 C250.2 271.2 253.9 256.8 260.8 254.7 C267.8 252.6 278.0 262.2 285.8 262.9 C293.5 263.6 303.7 259.5 307.3 258.8" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M134.2 289.3 C138.4 290.8 151.7 298.1 159.4 298.6 C167.1 299.1 174.0 296.7 180.3 292.3 C186.7 287.9 190.5 273.9 197.5 272.0 C204.5 270.1 214.8 280.2 222.6 280.7 C230.3 281.3 237.5 279.9 243.8 275.6 C250.2 271.2 253.9 256.8 260.8 254.7 C267.8 252.6 278.0 262.2 285.8 262.9 C293.5 263.6 303.7 259.5 307.3 258.8" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M111.5 333.7 C116.3 332.5 130.4 325.9 140.5 326.5 C150.5 327.1 161.5 335.4 171.7 337.3 C181.9 339.2 192.1 340.6 201.7 337.7 C211.3 334.8 219.9 324.2 229.3 319.8 C238.7 315.4 248.2 311.1 258.2 311.4 C268.2 311.8 279.2 319.8 289.4 321.8 C299.6 323.8 309.8 326.1 319.5 323.4 C329.1 320.8 342.6 308.8 347.2 305.9" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M111.5 333.7 C116.3 332.5 130.4 325.9 140.5 326.5 C150.5 327.1 161.5 335.4 171.7 337.3 C181.9 339.2 192.1 340.6 201.7 337.7 C211.3 334.8 219.9 324.2 229.3 319.8 C238.7 315.4 248.2 311.1 258.2 311.4 C268.2 311.8 279.2 319.8 289.4 321.8 C299.6 323.8 309.8 326.1 319.5 323.4 C329.1 320.8 342.6 308.8 347.2 305.9" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M143.7 415.8 C148.6 414.1 163.4 408.7 173.5 405.6 C183.7 402.6 196.0 403.4 204.7 397.7 C213.4 392.0 217.3 377.6 225.7 371.3 C234.1 365.1 245.0 363.4 255.1 360.3 C265.3 357.3 277.9 358.7 286.6 353.1 C295.4 347.5 299.4 333.3 307.7 326.9 C316.1 320.6 326.6 318.1 336.7 315.1 C346.9 312.0 363.3 309.6 368.6 308.5" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M143.7 415.8 C148.6 414.1 163.4 408.7 173.5 405.6 C183.7 402.6 196.0 403.4 204.7 397.7 C213.4 392.0 217.3 377.6 225.7 371.3 C234.1 365.1 245.0 363.4 255.1 360.3 C265.3 357.3 277.9 358.7 286.6 353.1 C295.4 347.5 299.4 333.3 307.7 326.9 C316.1 320.6 326.6 318.1 336.7 315.1 C346.9 312.0 363.3 309.6 368.6 308.5" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M144.7 447.4 C147.8 441.5 154.0 417.2 163.3 412.3 C172.6 407.3 189.9 420.1 200.4 417.8 C210.9 415.4 217.6 405.0 226.0 398.1 C234.4 391.2 240.4 379.1 250.8 376.6 C261.2 374.1 279.0 387.8 288.4 383.1 C297.8 378.3 298.2 353.9 307.1 348.3 C316.1 342.6 331.5 351.1 342.1 349.1 C352.8 347.1 366.1 338.4 370.9 336.3" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M144.7 447.4 C147.8 441.5 154.0 417.2 163.3 412.3 C172.6 407.3 189.9 420.1 200.4 417.8 C210.9 415.4 217.6 405.0 226.0 398.1 C234.4 391.2 240.4 379.1 250.8 376.6 C261.2 374.1 279.0 387.8 288.4 383.1 C297.8 378.3 298.2 353.9 307.1 348.3 C316.1 342.6 331.5 351.1 342.1 349.1 C352.8 347.1 366.1 338.4 370.9 336.3" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M158.6 255.3 C163.7 258.6 179.7 275.8 188.9 274.9 C198.1 274.0 204.7 251.2 213.8 249.9 C223.0 248.5 234.5 267.5 243.7 266.8 C253.0 266.1 260.0 247.1 269.2 245.6 C278.3 244.0 289.3 258.2 298.5 257.6 C307.7 257.0 315.5 243.8 324.6 242.2 C333.7 240.5 343.9 248.2 353.2 247.7 C362.4 247.2 375.6 240.8 380.1 239.4" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M158.6 255.3 C163.7 258.6 179.7 275.8 188.9 274.9 C198.1 274.0 204.7 251.2 213.8 249.9 C223.0 248.5 234.5 267.5 243.7 266.8 C253.0 266.1 260.0 247.1 269.2 245.6 C278.3 244.0 289.3 258.2 298.5 257.6 C307.7 257.0 315.5 243.8 324.6 242.2 C333.7 240.5 343.9 248.2 353.2 247.7 C362.4 247.2 375.6 240.8 380.1 239.4" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M181.8 424.4 C186.6 421.9 200.6 411.3 210.7 409.3 C220.9 407.4 232.5 413.9 242.8 412.5 C253.1 411.2 262.3 403.5 272.5 401.3 C282.6 399.0 293.3 400.1 303.6 398.9 C313.9 397.8 324.2 396.6 334.4 394.3 C344.5 391.9 354.0 386.3 364.3 385.0 C374.6 383.8 386.0 388.8 396.2 386.7 C406.3 384.6 420.4 374.8 425.3 372.5" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M181.8 424.4 C186.6 421.9 200.6 411.3 210.7 409.3 C220.9 407.4 232.5 413.9 242.8 412.5 C253.1 411.2 262.3 403.5 272.5 401.3 C282.6 399.0 293.3 400.1 303.6 398.9 C313.9 397.8 324.2 396.6 334.4 394.3 C344.5 391.9 354.0 386.3 364.3 385.0 C374.6 383.8 386.0 388.8 396.2 386.7 C406.3 384.6 420.4 374.8 425.3 372.5" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M122.2 371.3 C126.7 370.2 139.7 364.3 149.6 364.6 C159.6 364.9 172.4 374.6 181.8 373.1 C191.2 371.6 198.1 362.1 206.0 355.7 C213.9 349.2 219.9 336.9 229.0 334.4 C238.1 332.0 250.5 340.1 260.5 340.8 C270.6 341.6 281.1 343.5 289.5 338.9 C297.9 334.2 302.9 318.4 311.0 313.0 C319.2 307.5 333.9 307.1 338.4 306.0" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M122.2 371.3 C126.7 370.2 139.7 364.3 149.6 364.6 C159.6 364.9 172.4 374.6 181.8 373.1 C191.2 371.6 198.1 362.1 206.0 355.7 C213.9 349.2 219.9 336.9 229.0 334.4 C238.1 332.0 250.5 340.1 260.5 340.8 C270.6 341.6 281.1 343.5 289.5 338.9 C297.9 334.2 302.9 318.4 311.0 313.0 C319.2 307.5 333.9 307.1 338.4 306.0" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M169.6 267.2 C174.4 265.3 188.8 255.4 198.4 256.0 C208.0 256.6 217.7 269.8 227.3 270.8 C236.9 271.8 246.4 264.0 256.0 261.9 C265.6 259.8 275.2 256.6 284.8 258.2 C294.4 259.7 304.1 271.5 313.7 271.4 C323.3 271.2 332.8 258.7 342.4 257.2 C351.9 255.6 361.6 260.0 371.2 262.0 C380.8 264.0 395.2 268.0 400.0 269.3" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M169.6 267.2 C174.4 265.3 188.8 255.4 198.4 256.0 C208.0 256.6 217.7 269.8 227.3 270.8 C236.9 271.8 246.4 264.0 256.0 261.9 C265.6 259.8 275.2 256.6 284.8 258.2 C294.4 259.7 304.1 271.5 313.7 271.4 C323.3 271.2 332.8 258.7 342.4 257.2 C351.9 255.6 361.6 260.0 371.2 262.0 C380.8 264.0 395.2 268.0 400.0 269.3" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M198.1 389.7 C202.2 388.1 214.4 383.0 222.6 379.6 C230.8 376.2 238.3 369.6 247.1 369.3 C255.8 369.1 266.4 379.4 275.0 378.0 C283.5 376.6 290.0 363.9 298.2 360.9 C306.5 357.9 315.6 359.8 324.4 360.1 C333.3 360.4 342.9 365.4 351.2 362.8 C359.5 360.1 365.8 346.3 374.3 344.4 C382.7 342.5 397.3 350.2 401.9 351.4" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M198.1 389.7 C202.2 388.1 214.4 383.0 222.6 379.6 C230.8 376.2 238.3 369.6 247.1 369.3 C255.8 369.1 266.4 379.4 275.0 378.0 C283.5 376.6 290.0 363.9 298.2 360.9 C306.5 357.9 315.6 359.8 324.4 360.1 C333.3 360.4 342.9 365.4 351.2 362.8 C359.5 360.1 365.8 346.3 374.3 344.4 C382.7 342.5 397.3 350.2 401.9 351.4" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M149.6 397.7 C153.5 395.5 165.2 383.8 173.0 384.5 C180.9 385.3 188.8 401.4 196.6 402.2 C204.5 403.0 212.3 391.2 220.1 389.1 C227.9 387.1 235.7 388.1 243.6 390.1 C251.4 392.2 259.3 402.4 267.2 401.3 C275.0 400.2 282.7 384.1 290.6 383.5 C298.4 383.0 306.3 396.1 314.2 397.9 C322.0 399.7 333.7 394.9 337.6 394.3" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M149.6 397.7 C153.5 395.5 165.2 383.8 173.0 384.5 C180.9 385.3 188.8 401.4 196.6 402.2 C204.5 403.0 212.3 391.2 220.1 389.1 C227.9 387.1 235.7 388.1 243.6 390.1 C251.4 392.2 259.3 402.4 267.2 401.3 C275.0 400.2 282.7 384.1 290.6 383.5 C298.4 383.0 306.3 396.1 314.2 397.9 C322.0 399.7 333.7 394.9 337.6 394.3" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M192.4 365.6 C198.3 366.1 216.7 369.6 227.5 368.7 C238.4 367.8 249.0 366.5 257.6 360.4 C266.2 354.4 271.0 339.8 279.0 332.4 C287.0 325.1 295.3 318.3 305.6 316.2 C315.9 314.0 329.9 320.3 340.7 319.4 C351.6 318.4 362.1 316.7 370.6 310.6 C379.1 304.4 383.9 289.8 392.0 282.5 C400.0 275.2 414.3 269.3 418.8 266.7" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M192.4 365.6 C198.3 366.1 216.7 369.6 227.5 368.7 C238.4 367.8 249.0 366.5 257.6 360.4 C266.2 354.4 271.0 339.8 279.0 332.4 C287.0 325.1 295.3 318.3 305.6 316.2 C315.9 314.0 329.9 320.3 340.7 319.4 C351.6 318.4 362.1 316.7 370.6 310.6 C379.1 304.4 383.9 289.8 392.0 282.5 C400.0 275.2 414.3 269.3 418.8 266.7" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M124.0 392.8 C128.6 390.8 142.9 380.0 152.0 380.4 C161.0 380.8 169.4 394.4 178.5 395.1 C187.5 395.8 197.3 384.1 206.4 384.4 C215.4 384.7 223.9 396.2 233.0 396.9 C242.0 397.6 251.6 388.6 260.7 388.9 C269.8 389.1 278.5 397.6 287.5 398.4 C296.6 399.2 306.0 393.4 315.1 393.6 C324.2 393.8 337.6 398.6 342.1 399.6" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M124.0 392.8 C128.6 390.8 142.9 380.0 152.0 380.4 C161.0 380.8 169.4 394.4 178.5 395.1 C187.5 395.8 197.3 384.1 206.4 384.4 C215.4 384.7 223.9 396.2 233.0 396.9 C242.0 397.6 251.6 388.6 260.7 388.9 C269.8 389.1 278.5 397.6 287.5 398.4 C296.6 399.2 306.0 393.4 315.1 393.6 C324.2 393.8 337.6 398.6 342.1 399.6" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M145.4 429.8 C150.6 431.7 168.0 442.9 177.0 440.7 C186.0 438.6 190.5 419.5 199.4 416.8 C208.2 414.1 221.0 426.3 230.1 424.4 C239.2 422.5 245.1 408.5 253.9 405.5 C262.7 402.5 273.8 408.3 282.9 406.6 C292.0 404.9 299.9 398.3 308.6 395.2 C317.4 392.2 326.4 389.8 335.5 388.2 C344.6 386.5 358.8 385.7 363.5 385.2" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M145.4 429.8 C150.6 431.7 168.0 442.9 177.0 440.7 C186.0 438.6 190.5 419.5 199.4 416.8 C208.2 414.1 221.0 426.3 230.1 424.4 C239.2 422.5 245.1 408.5 253.9 405.5 C262.7 402.5 273.8 408.3 282.9 406.6 C292.0 404.9 299.9 398.3 308.6 395.2 C317.4 392.2 326.4 389.8 335.5 388.2 C344.6 386.5 358.8 385.7 363.5 385.2" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M126.5 381.8 C131.3 380.3 145.0 374.3 154.9 372.7 C164.9 371.1 177.0 376.3 186.2 372.3 C195.4 368.4 200.6 352.3 210.0 349.0 C219.4 345.8 232.9 355.1 242.7 353.0 C252.5 351.0 259.9 341.6 268.8 337.0 C277.8 332.3 286.5 326.9 296.4 325.2 C306.3 323.5 319.0 330.4 328.2 326.8 C337.5 323.1 348.0 307.0 351.9 303.1" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M126.5 381.8 C131.3 380.3 145.0 374.3 154.9 372.7 C164.9 371.1 177.0 376.3 186.2 372.3 C195.4 368.4 200.6 352.3 210.0 349.0 C219.4 345.8 232.9 355.1 242.7 353.0 C252.5 351.0 259.9 341.6 268.8 337.0 C277.8 332.3 286.5 326.9 296.4 325.2 C306.3 323.5 319.0 330.4 328.2 326.8 C337.5 323.1 348.0 307.0 351.9 303.1" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M150.7 281.4 C154.3 276.6 162.9 259.1 171.8 252.7 C180.8 246.3 194.0 246.8 204.5 242.8 C215.0 238.9 226.1 236.1 234.7 229.1 C243.3 222.0 246.9 206.9 256.0 200.7 C265.2 194.5 279.0 196.1 289.5 192.1 C299.9 188.1 310.2 183.8 318.7 176.6 C327.1 169.4 331.0 154.7 340.3 148.8 C349.6 143.0 368.7 142.6 374.4 141.3" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M150.7 281.4 C154.3 276.6 162.9 259.1 171.8 252.7 C180.8 246.3 194.0 246.8 204.5 242.8 C215.0 238.9 226.1 236.1 234.7 229.1 C243.3 222.0 246.9 206.9 256.0 200.7 C265.2 194.5 279.0 196.1 289.5 192.1 C299.9 188.1 310.2 183.8 318.7 176.6 C327.1 169.4 331.0 154.7 340.3 148.8 C349.6 143.0 368.7 142.6 374.4 141.3" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M146.9 281.4 C149.3 277.8 154.7 262.6 161.3 259.6 C167.9 256.7 179.5 265.9 186.4 263.9 C193.4 261.8 196.8 251.1 203.0 247.3 C209.2 243.5 216.7 242.8 223.9 241.2 C231.0 239.6 239.5 241.3 245.8 237.6 C252.0 233.9 254.7 221.4 261.5 219.1 C268.4 216.9 280.3 226.9 287.0 224.2 C293.7 221.5 299.2 206.5 301.7 202.9" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M146.9 281.4 C149.3 277.8 154.7 262.6 161.3 259.6 C167.9 256.7 179.5 265.9 186.4 263.9 C193.4 261.8 196.8 251.1 203.0 247.3 C209.2 243.5 216.7 242.8 223.9 241.2 C231.0 239.6 239.5 241.3 245.8 237.6 C252.0 233.9 254.7 221.4 261.5 219.1 C268.4 216.9 280.3 226.9 287.0 224.2 C293.7 221.5 299.2 206.5 301.7 202.9" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M198.1 437.1 C202.7 436.5 217.6 430.2 225.5 433.7 C233.3 437.2 237.1 456.4 245.4 458.4 C253.7 460.3 266.8 444.0 275.3 445.2 C283.8 446.5 288.5 462.0 296.2 465.9 C304.0 469.9 313.1 468.8 321.9 469.0 C330.6 469.2 341.0 463.4 348.8 467.1 C356.6 470.8 360.6 489.2 368.9 491.0 C377.3 492.7 393.9 479.8 398.9 477.6" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M198.1 437.1 C202.7 436.5 217.6 430.2 225.5 433.7 C233.3 437.2 237.1 456.4 245.4 458.4 C253.7 460.3 266.8 444.0 275.3 445.2 C283.8 446.5 288.5 462.0 296.2 465.9 C304.0 469.9 313.1 468.8 321.9 469.0 C330.6 469.2 341.0 463.4 348.8 467.1 C356.6 470.8 360.6 489.2 368.9 491.0 C377.3 492.7 393.9 479.8 398.9 477.6" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M179.8 421.5 C186.0 419.5 205.2 410.2 217.0 409.2 C228.8 408.2 240.0 410.3 250.7 415.5 C261.3 420.8 270.0 435.7 280.7 440.8 C291.3 445.8 302.7 447.2 314.5 446.0 C326.4 444.8 340.0 434.3 351.7 433.7 C363.4 433.1 374.3 436.9 384.9 442.6 C395.4 448.2 404.2 462.9 414.9 467.5 C425.7 472.2 443.5 469.8 449.2 470.3" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M179.8 421.5 C186.0 419.5 205.2 410.2 217.0 409.2 C228.8 408.2 240.0 410.3 250.7 415.5 C261.3 420.8 270.0 435.7 280.7 440.8 C291.3 445.8 302.7 447.2 314.5 446.0 C326.4 444.8 340.0 434.3 351.7 433.7 C363.4 433.1 374.3 436.9 384.9 442.6 C395.4 448.2 404.2 462.9 414.9 467.5 C425.7 472.2 443.5 469.8 449.2 470.3" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M148.9 295.6 C152.7 291.4 162.5 273.3 171.7 270.5 C181.0 267.6 195.1 281.1 204.4 278.4 C213.7 275.8 218.3 257.4 227.5 254.5 C236.8 251.6 250.5 263.7 259.8 261.1 C269.1 258.5 274.2 241.6 283.4 238.7 C292.6 235.8 305.9 246.3 315.2 243.7 C324.5 241.1 330.1 225.9 339.3 223.0 C348.5 220.1 365.3 225.6 370.6 226.2" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M148.9 295.6 C152.7 291.4 162.5 273.3 171.7 270.5 C181.0 267.6 195.1 281.1 204.4 278.4 C213.7 275.8 218.3 257.4 227.5 254.5 C236.8 251.6 250.5 263.7 259.8 261.1 C269.1 258.5 274.2 241.6 283.4 238.7 C292.6 235.8 305.9 246.3 315.2 243.7 C324.5 241.1 330.1 225.9 339.3 223.0 C348.5 220.1 365.3 225.6 370.6 226.2" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M152.3 373.9 C156.7 374.7 169.8 378.8 178.5 378.5 C187.1 378.1 195.6 372.1 204.3 371.9 C213.0 371.7 221.8 377.6 230.5 377.3 C239.1 376.9 247.6 370.1 256.3 369.9 C264.9 369.7 273.8 376.4 282.5 376.0 C291.1 375.7 299.6 368.1 308.2 367.9 C316.9 367.6 325.8 375.1 334.5 374.8 C343.1 374.5 355.9 367.3 360.2 365.8" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M152.3 373.9 C156.7 374.7 169.8 378.8 178.5 378.5 C187.1 378.1 195.6 372.1 204.3 371.9 C213.0 371.7 221.8 377.6 230.5 377.3 C239.1 376.9 247.6 370.1 256.3 369.9 C264.9 369.7 273.8 376.4 282.5 376.0 C291.1 375.7 299.6 368.1 308.2 367.9 C316.9 367.6 325.8 375.1 334.5 374.8 C343.1 374.5 355.9 367.3 360.2 365.8" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+<path d="M151.3 368.1 C155.5 368.3 167.9 368.8 176.1 369.5 C184.3 370.2 192.5 371.1 200.7 372.4 C208.8 373.7 216.8 376.5 225.0 377.2 C233.3 378.0 241.9 375.5 250.0 376.8 C258.2 378.0 265.8 384.1 274.0 384.9 C282.2 385.6 291.2 380.1 299.4 381.3 C307.5 382.5 314.7 391.5 322.9 392.3 C331.2 393.1 344.4 387.1 348.7 386.1" fill="none" stroke="#B98A4E" stroke-width="7.5" stroke-linecap="round" opacity=".35"/>
+<path d="M151.3 368.1 C155.5 368.3 167.9 368.8 176.1 369.5 C184.3 370.2 192.5 371.1 200.7 372.4 C208.8 373.7 216.8 376.5 225.0 377.2 C233.3 378.0 241.9 375.5 250.0 376.8 C258.2 378.0 265.8 384.1 274.0 384.9 C282.2 385.6 291.2 380.1 299.4 381.3 C307.5 382.5 314.7 391.5 322.9 392.3 C331.2 393.1 344.4 387.1 348.7 386.1" fill="none" stroke="#FFF4DF" stroke-width="5" stroke-linecap="round" opacity=".96"/>
+</g>
+<path d="M394.0 183.7 L399.3 197.4 L389.3 215.5 L370.8 233.9 L345.6 238.6 L319.0 244.3 L311.0 229.0 L313.3 212.2 L319.2 194.0 L338.7 175.2 L365.7 166.8 L386.5 170.6 Z" fill="#B86454" stroke="#8B4436" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M344.9 201.8 Q356.6 197.9 363.8 195.7" fill="none" stroke="#DDA08C" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<path d="M336.6 217.2 Q348.1 202.8 367.5 197.5" fill="none" stroke="#DDA08C" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<path d="M346.5 212.6 Q356.2 202.2 375.2 194.4" fill="none" stroke="#DDA08C" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<path d="M320.8 214.5 Q355.0 225.9 391.1 208.8" fill="none" stroke="#F2DDD0" stroke-width="3.2" stroke-linecap="round" opacity=".85" transform="rotate(-29 355.0 205.0)"/>
+<path d="M444.5 276.4 L435.7 286.8 L417.4 289.6 L394.8 289.9 L374.2 276.8 L362.9 261.1 L364.8 247.3 L375.2 237.9 L390.8 230.4 L414.8 235.1 L432.8 248.6 L444.7 262.8 Z" fill="#B86454" stroke="#8B4436" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M383.2 257.3 Q399.9 259.8 408.2 266.9" fill="none" stroke="#DDA08C" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<path d="M389.4 256.8 Q403.9 256.0 413.7 262.9" fill="none" stroke="#DDA08C" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<path d="M400.0 269.1 Q419.0 274.5 433.9 271.1" fill="none" stroke="#DDA08C" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<path d="M372.6 271.0 Q405.0 281.8 439.2 265.6" fill="none" stroke="#F2DDD0" stroke-width="3.2" stroke-linecap="round" opacity=".85" transform="rotate(20 405.0 262.0)"/>
+<path d="M359.2 298.8 L344.8 303.6 L326.1 292.6 L306.1 281.0 L299.8 258.9 L290.1 236.4 L302.6 227.5 L314.1 217.2 L334.2 229.6 L348.8 247.1 L360.1 265.1 L360.6 281.7 Z" fill="#B86454" stroke="#8B4436" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M321.6 252.0 Q336.9 257.2 346.9 271.7" fill="none" stroke="#DDA08C" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<path d="M328.0 249.3 Q330.4 259.1 340.5 262.1" fill="none" stroke="#DDA08C" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<path d="M315.8 247.8 Q326.7 258.8 331.6 265.2" fill="none" stroke="#DDA08C" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<path d="M299.4 270.5 Q330.0 280.7 362.3 265.4" fill="none" stroke="#F2DDD0" stroke-width="3.2" stroke-linecap="round" opacity=".85" transform="rotate(52 330.0 262.0)"/>
+<path d="M428.1 322.7 L435.3 335.6 L420.2 349.2 L396.7 353.1 L374.5 357.2 L353.4 352.6 L355.4 337.4 L355.5 325.2 L367.2 313.1 L386.8 304.2 L407.0 306.7 L424.3 311.1 Z" fill="#B86454" stroke="#8B4436" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M384.1 337.2 Q399.7 329.8 414.0 330.3" fill="none" stroke="#DDA08C" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<path d="M380.5 339.9 Q398.0 333.6 408.2 336.3" fill="none" stroke="#DDA08C" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<path d="M372.5 338.3 Q389.4 334.6 400.6 336.5" fill="none" stroke="#DDA08C" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<path d="M362.3 338.2 Q392.0 348.1 423.4 333.3" fill="none" stroke="#F2DDD0" stroke-width="3.2" stroke-linecap="round" opacity=".85" transform="rotate(-11 392.0 330.0)"/>
+<path d="M336.4 212.4 L330.4 222.8 L313.8 226.4 L295.9 225.2 L274.1 222.7 L262.7 209.9 L263.2 197.5 L267.3 185.8 L285.2 182.1 L304.7 181.8 L325.0 188.0 L339.9 199.8 Z" fill="#B86454" stroke="#8B4436" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M286.0 207.9 Q298.4 207.5 301.5 209.8" fill="none" stroke="#DDA08C" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<path d="M287.7 198.3 Q299.6 199.5 305.4 199.1" fill="none" stroke="#DDA08C" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<path d="M279.3 193.6 Q296.9 198.4 306.7 204.8" fill="none" stroke="#DDA08C" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+<path d="M273.0 212.5 Q300.0 221.5 328.5 208.0" fill="none" stroke="#F2DDD0" stroke-width="3.2" stroke-linecap="round" opacity=".85" transform="rotate(11 300.0 205.0)"/>
+<path d="M382.9 169.3 A12.9 12.9 0 1 1 407.1 176.9" fill="none" stroke="#F7F2E8" stroke-width="3.4" stroke-linecap="round" opacity=".92"/>
+<path d="M126.8 318.3 A13.2 13.2 0 1 1 130.9 294.6" fill="none" stroke="#F7F2E8" stroke-width="3.4" stroke-linecap="round" opacity=".92"/>
+<path d="M454.1 252.3 A14.2 14.2 0 0 1 446.7 279.4" fill="none" stroke="#F7F2E8" stroke-width="3.4" stroke-linecap="round" opacity=".92"/>
+<path d="M427.0 356.0 A13.2 13.2 0 0 1 443.3 376.0" fill="none" stroke="#F7F2E8" stroke-width="3.4" stroke-linecap="round" opacity=".92"/>
+<path d="M261.9 338.5 A17.3 17.3 0 1 1 235.8 318.5" fill="none" stroke="#F7F2E8" stroke-width="3.4" stroke-linecap="round" opacity=".92"/>
+<path d="M176.7 341.1 A14.9 14.9 0 0 1 151.3 356.4" fill="none" stroke="#F7F2E8" stroke-width="3.4" stroke-linecap="round" opacity=".92"/>
+<path d="M410.5 274.4 A17.6 17.6 0 1 1 412.8 304.9" fill="none" stroke="#F7F2E8" stroke-width="3.4" stroke-linecap="round" opacity=".92"/>
+<circle cx="425.8" cy="376.1" r="5.6" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="314.5" cy="154.6" r="4.7" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="408.1" cy="197.5" r="4.8" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="243.8" cy="475.3" r="6.7" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="391.2" cy="377.9" r="7.6" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="249.8" cy="382.0" r="7.8" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="170.9" cy="185.8" r="6.5" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="344.8" cy="274.7" r="6.7" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="185.5" cy="443.8" r="6.2" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="415.1" cy="322.0" r="4.9" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="349.3" cy="404.4" r="7.5" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="424.9" cy="218.1" r="4.7" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="488.1" cy="302.5" r="6.9" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="333.2" cy="274.8" r="7.0" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="484.6" cy="294.0" r="7.7" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="283.1" cy="298.4" r="6.1" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="333.8" cy="256.9" r="6.1" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="274.2" cy="225.5" r="5.8" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="417.8" cy="186.9" r="7.4" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="155.7" cy="336.6" r="5.3" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="235.8" cy="268.3" r="6.1" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="304.4" cy="343.3" r="5.9" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="427.5" cy="294.1" r="5.1" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="156.7" cy="231.3" r="5.4" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="378.3" cy="333.5" r="4.8" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="399.8" cy="175.0" r="6.1" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="407.7" cy="251.1" r="7.0" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="381.5" cy="423.7" r="7.6" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="399.6" cy="306.9" r="6.8" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="325.1" cy="215.4" r="7.3" fill="#CFE8B6" fill-opacity=".45" stroke="#4E9D3E" stroke-width="3.2"/>
+<circle cx="349.7" cy="448.3" r="5.7" fill="#3F8C3B"/>
+<circle cx="343.2" cy="451.6" r="6.4" fill="#3F8C3B"/>
+<circle cx="337.2" cy="442.4" r="6.7" fill="#3F8C3B"/>
+<circle cx="347.7" cy="438.8" r="6.6" fill="#3F8C3B"/>
+<circle cx="343.8" cy="444.6" r="2.2" fill="#2E6B2D"/>
+<circle cx="318.7" cy="398.0" r="6.3" fill="#3F8C3B"/>
+<circle cx="312.4" cy="399.2" r="5.5" fill="#3F8C3B"/>
+<circle cx="309.8" cy="387.2" r="6.6" fill="#3F8C3B"/>
+<circle cx="319.4" cy="387.6" r="5.7" fill="#3F8C3B"/>
+<circle cx="314.4" cy="392.5" r="2.2" fill="#2E6B2D"/>
+<circle cx="432.5" cy="385.5" r="6.4" fill="#3F8C3B"/>
+<circle cx="423.2" cy="389.4" r="6.5" fill="#3F8C3B"/>
+<circle cx="420.8" cy="378.4" r="5.7" fill="#3F8C3B"/>
+<circle cx="428.4" cy="376.4" r="6.0" fill="#3F8C3B"/>
+<circle cx="426.0" cy="383.0" r="2.2" fill="#2E6B2D"/>
+<circle cx="398.2" cy="280.7" r="5.6" fill="#3F8C3B"/>
+<circle cx="390.4" cy="282.0" r="5.1" fill="#3F8C3B"/>
+<circle cx="386.5" cy="274.1" r="6.9" fill="#3F8C3B"/>
+<circle cx="394.9" cy="268.8" r="6.3" fill="#3F8C3B"/>
+<circle cx="393.4" cy="275.7" r="2.2" fill="#2E6B2D"/>
+<circle cx="279.5" cy="266.3" r="5.3" fill="#3F8C3B"/>
+<circle cx="273.4" cy="267.9" r="6.4" fill="#3F8C3B"/>
+<circle cx="267.9" cy="260.0" r="5.4" fill="#3F8C3B"/>
+<circle cx="280.5" cy="257.0" r="6.1" fill="#3F8C3B"/>
+<circle cx="274.8" cy="261.1" r="2.2" fill="#2E6B2D"/>
+<circle cx="318.1" cy="157.8" r="5.3" fill="#3F8C3B"/>
+<circle cx="310.6" cy="161.2" r="6.3" fill="#3F8C3B"/>
+<circle cx="306.4" cy="150.2" r="6.0" fill="#3F8C3B"/>
+<circle cx="317.6" cy="150.2" r="5.2" fill="#3F8C3B"/>
+<circle cx="312.0" cy="154.4" r="2.2" fill="#2E6B2D"/>
+<circle cx="308.1" cy="341.1" r="8.5" fill="#D2362B"/><circle cx="308.1" cy="341.1" r="4.2" fill="#F3A48C"/>
+<ellipse cx="309.9" cy="342.6" rx="1.4" ry="1" fill="#FBE7B0"/>
+<ellipse cx="306.0" cy="342.4" rx="1.4" ry="1" fill="#FBE7B0"/>
+<ellipse cx="307.9" cy="338.7" rx="1.4" ry="1" fill="#FBE7B0"/>
+<circle cx="281.3" cy="427.6" r="8.5" fill="#D2362B"/><circle cx="281.3" cy="427.6" r="4.2" fill="#F3A48C"/>
+<ellipse cx="283.5" cy="428.6" rx="1.4" ry="1" fill="#FBE7B0"/>
+<ellipse cx="279.5" cy="429.2" rx="1.4" ry="1" fill="#FBE7B0"/>
+<ellipse cx="281.5" cy="425.2" rx="1.4" ry="1" fill="#FBE7B0"/>
+<circle cx="295.3" cy="177.1" r="8.5" fill="#D2362B"/><circle cx="295.3" cy="177.1" r="4.2" fill="#F3A48C"/>
+<ellipse cx="297.1" cy="178.7" rx="1.4" ry="1" fill="#FBE7B0"/>
+<ellipse cx="292.9" cy="177.6" rx="1.4" ry="1" fill="#FBE7B0"/>
+<ellipse cx="296.0" cy="174.9" rx="1.4" ry="1" fill="#FBE7B0"/>
+<circle cx="306.7" cy="256.1" r="8.5" fill="#D2362B"/><circle cx="306.7" cy="256.1" r="4.2" fill="#F3A48C"/>
+<ellipse cx="308.6" cy="257.6" rx="1.4" ry="1" fill="#FBE7B0"/>
+<ellipse cx="305.2" cy="258.0" rx="1.4" ry="1" fill="#FBE7B0"/>
+<ellipse cx="307.4" cy="253.8" rx="1.4" ry="1" fill="#FBE7B0"/>
+<circle cx="278.2" cy="135.5" r="8.5" fill="#D2362B"/><circle cx="278.2" cy="135.5" r="4.2" fill="#F3A48C"/>
+<ellipse cx="280.0" cy="137.0" rx="1.4" ry="1" fill="#FBE7B0"/>
+<ellipse cx="276.5" cy="137.2" rx="1.4" ry="1" fill="#FBE7B0"/>
+<ellipse cx="278.9" cy="133.2" rx="1.4" ry="1" fill="#FBE7B0"/>
+<circle cx="259.4" cy="274.7" r="8.5" fill="#D2362B"/><circle cx="259.4" cy="274.7" r="4.2" fill="#F3A48C"/>
+<ellipse cx="261.5" cy="276.0" rx="1.4" ry="1" fill="#FBE7B0"/>
+<ellipse cx="257.4" cy="275.9" rx="1.4" ry="1" fill="#FBE7B0"/>
+<ellipse cx="260.4" cy="272.5" rx="1.4" ry="1" fill="#FBE7B0"/>
+<circle cx="479.1" cy="246.7" r="8.5" fill="#D2362B"/><circle cx="479.1" cy="246.7" r="4.2" fill="#F3A48C"/>
+<ellipse cx="481.5" cy="246.8" rx="1.4" ry="1" fill="#FBE7B0"/>
+<ellipse cx="477.3" cy="248.3" rx="1.4" ry="1" fill="#FBE7B0"/>
+<ellipse cx="479.1" cy="244.3" rx="1.4" ry="1" fill="#FBE7B0"/>
+<circle cx="259.2" cy="460.3" r="8.5" fill="#D2362B"/><circle cx="259.2" cy="460.3" r="4.2" fill="#F3A48C"/>
+<ellipse cx="261.3" cy="461.4" rx="1.4" ry="1" fill="#FBE7B0"/>
+<ellipse cx="257.0" cy="461.2" rx="1.4" ry="1" fill="#FBE7B0"/>
+<ellipse cx="259.1" cy="457.9" rx="1.4" ry="1" fill="#FBE7B0"/>
+<path d="M150 150 Q195 185 242 232" fill="none" stroke="#2E5B2C" stroke-width="4" stroke-linecap="round"/>
+<ellipse cx="171.5" cy="145.3" rx="21" ry="10.5" fill="#2F7A3E" transform="rotate(-12 171.5 145.3)"/>
+<path d="M155.9 148.7 L187.1 142.0" stroke="#6DB277" stroke-width="1.6" opacity=".8"/>
+<ellipse cx="149.0" cy="172.0" rx="21" ry="10.5" fill="#2F7A3E" transform="rotate(93 149.0 172.0)"/>
+<path d="M149.7 156.0 L148.3 188.0" stroke="#6DB277" stroke-width="1.6" opacity=".8"/>
+<ellipse cx="205.4" cy="171.8" rx="21" ry="10.5" fill="#2F7A3E" transform="rotate(-22 205.4 171.8)"/>
+<path d="M190.6 177.8 L220.3 165.8" stroke="#6DB277" stroke-width="1.6" opacity=".8"/>
+<ellipse cx="183.6" cy="202.0" rx="21" ry="10.5" fill="#2F7A3E" transform="rotate(94 183.6 202.0)"/>
+<path d="M184.6 186.0 L182.6 217.9" stroke="#6DB277" stroke-width="1.6" opacity=".8"/>
+<ellipse cx="236.1" cy="198.9" rx="21" ry="10.5" fill="#2F7A3E" transform="rotate(-16 236.1 198.9)"/>
+<path d="M220.8 203.3 L251.5 194.5" stroke="#6DB277" stroke-width="1.6" opacity=".8"/>
+<ellipse cx="213.5" cy="226.9" rx="21" ry="10.5" fill="#2F7A3E" transform="rotate(94 213.5 226.9)"/>
+<path d="M214.6 211.0 L212.4 242.9" stroke="#6DB277" stroke-width="1.6" opacity=".8"/>
+<ellipse cx="261.1" cy="223.7" rx="21" ry="10.5" fill="#2F7A3E" transform="rotate(-17 261.1 223.7)"/>
+<path d="M245.7 228.3 L276.4 219.1" stroke="#6DB277" stroke-width="1.6" opacity=".8"/>
+<ellipse cx="235.5" cy="251.5" rx="21" ry="10.5" fill="#2F7A3E" transform="rotate(102 235.5 251.5)"/>
+<path d="M238.8 235.9 L232.1 267.2" stroke="#6DB277" stroke-width="1.6" opacity=".8"/>
+<path d="M455.0 470.0 L498.2 454.3 A46 46 0 0 1 409.7 478.0 Z" fill="#DDEB9C" stroke="#7FAE34" stroke-width="7" stroke-linejoin="round"/>
+<path d="M455.0 470.0 L489.6 488.0" stroke="#BFD673" stroke-width="2"/>
+<path d="M455.0 470.0 L465.1 507.7" stroke="#BFD673" stroke-width="2"/>
+<path d="M455.0 470.0 L434.0 502.9" stroke="#BFD673" stroke-width="2"/>
+<g transform="rotate(-38 150 470)">
+<path d="M40 470 Q20 470 18 480 Q20 490 40 490 L110 486 Q118 480 110 474 Z" fill="#FBFAF6" stroke="#CFC6B3" stroke-width="2"/>
+<ellipse cx="160" cy="480" rx="56" ry="36" fill="#FBFAF6" stroke="#CFC6B3" stroke-width="2.4"/>
+<ellipse cx="164" cy="480" rx="40" ry="23" fill="url(#sq-bruehe)" opacity=".92"/>
+<path d="M36 480 L104 480" stroke="#2B4B8C" stroke-width="2.4" stroke-linecap="round"/>
+</g>
+<g transform="rotate(-12 540 330)"><rect x="532" y="70" width="14" height="500" rx="7" fill="#7A4B26"/><rect x="536" y="76" width="3" height="486" rx="1.5" fill="#A8723F" opacity=".7"/><rect x="532" y="70" width="14" height="70" rx="7" fill="#5A3519"/></g>
+<g transform="rotate(-12 562 330)"><rect x="554" y="70" width="14" height="500" rx="7" fill="#7A4B26"/><rect x="558" y="76" width="3" height="486" rx="1.5" fill="#A8723F" opacity=".7"/><rect x="554" y="70" width="14" height="70" rx="7" fill="#5A3519"/></g>
+<path class="dampf d1" d="M250 300 C220 250 280 210 250 160 S225 80 255 40" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" opacity=".5"/>
+<path class="dampf d2" d="M305 270 C275 220 335 180 305 130 S280 50 310 10" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" opacity=".5"/>
+<path class="dampf d3" d="M360 305 C330 255 390 215 360 165 S335 85 365 45" fill="none" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round" opacity=".5"/>
+</svg>
+        <figcaption class="etikett"><b>Phở Bò</b><span>Reisnudelsuppe mit Rindfleisch</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="fliesen" aria-hidden="true"></div>
+
+  <section class="karte" id="speisekarte" aria-labelledby="h-karte">
+    <div class="innen">
+      <div class="karte-kopf">
+        <p class="oberzeile">Thực đơn · Speisekarte</p>
+        <h2 class="titel" id="h-karte">Aus der Küche an der Marktgasse</h2>
+        <p>Tippen Sie auf «+», dann landet das Gericht direkt auf Ihrem Bestellzettel.</p>
+        <div class="notiz"><b>Entwurfsnotiz für Song Que</b><span>Das ist eine Beispielkarte. Eine Speisekarte von Song Que habe ich online nicht gefunden. Die Gerichte unten sind Beispiele und alle Preise erfunden. Belegt ist nur Phở Bò, das auf Tripadvisor bei Ihnen erwähnt ist. Schicken Sie mir Ihre Karte oder ein Foto davon, dann stehen hier Ihre Gerichte und Ihre Preise.</span></div>
+      </div>
+      <ul class="gerichte">
+<li class="gericht">
+  <span class="nr" aria-hidden="true">1</span>
+  <div><h3>Phở Bò</h3><p>Reisnudelsuppe mit Rindfleisch</p><span class="marker echt">Gericht belegt · Preis Beispiel</span></div>
+  <div class="preis-spalte"><span class="preis">18.50</span><button type="button" class="plus" data-plus="g1" aria-pressed="false" aria-label="Phở Bò zur Bestellung hinzufügen">+</button></div>
+</li>
+<li class="gericht">
+  <span class="nr" aria-hidden="true">2</span>
+  <div><h3>Gỏi Cuốn</h3><p>Sommerrollen mit Crevetten, Reisnudeln und Kräutern</p><span class="marker">Beispiel</span></div>
+  <div class="preis-spalte"><span class="preis">8.50</span><button type="button" class="plus" data-plus="g2" aria-pressed="false" aria-label="Gỏi Cuốn zur Bestellung hinzufügen">+</button></div>
+</li>
+<li class="gericht">
+  <span class="nr" aria-hidden="true">3</span>
+  <div><h3>Chả Giò</h3><p>Knusprige Frühlingsrollen</p><span class="marker">Beispiel</span></div>
+  <div class="preis-spalte"><span class="preis">8.–</span><button type="button" class="plus" data-plus="g3" aria-pressed="false" aria-label="Chả Giò zur Bestellung hinzufügen">+</button></div>
+</li>
+<li class="gericht">
+  <span class="nr" aria-hidden="true">4</span>
+  <div><h3>Bún Thịt Nướng</h3><p>Reisnudeln mit grilliertem Schweinefleisch und Kräutern</p><span class="marker">Beispiel</span></div>
+  <div class="preis-spalte"><span class="preis">18.50</span><button type="button" class="plus" data-plus="g4" aria-pressed="false" aria-label="Bún Thịt Nướng zur Bestellung hinzufügen">+</button></div>
+</li>
+<li class="gericht">
+  <span class="nr" aria-hidden="true">5</span>
+  <div><h3>Cơm Chiên</h3><p>Gebratener Reis</p><span class="marker">Beispiel</span></div>
+  <div class="preis-spalte"><span class="preis">17.–</span><button type="button" class="plus" data-plus="g5" aria-pressed="false" aria-label="Cơm Chiên zur Bestellung hinzufügen">+</button></div>
+</li>
+<li class="gericht">
+  <span class="nr" aria-hidden="true">6</span>
+  <div><h3>Bánh Mì</h3><p>Baguette-Sandwich auf vietnamesische Art</p><span class="marker">Beispiel</span></div>
+  <div class="preis-spalte"><span class="preis">12.–</span><button type="button" class="plus" data-plus="g6" aria-pressed="false" aria-label="Bánh Mì zur Bestellung hinzufügen">+</button></div>
+</li>
+<li class="gericht">
+  <span class="nr" aria-hidden="true">7</span>
+  <div><h3>Cà Phê Sữa Đá</h3><p>Vietnamesischer Eiskaffee mit Kondensmilch</p><span class="marker">Beispiel</span></div>
+  <div class="preis-spalte"><span class="preis">5.50</span><button type="button" class="plus" data-plus="g7" aria-pressed="false" aria-label="Cà Phê Sữa Đá zur Bestellung hinzufügen">+</button></div>
+</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="fliesen" aria-hidden="true"></div>
+
+  <section class="bestellen" id="vorbestellen" aria-labelledby="h-bestellen">
+    <div class="innen">
+      <div class="text">
+        <p class="oberzeile">Đặt món · Vorbestellen</p>
+        <h2 class="titel" id="h-bestellen">Vorbestellen und abholen</h2>
+        <p>Gerichte in der Karte antippen, Abholzeit wählen und absenden. Die Bestellung kommt als fertige Nachricht direkt bei Song Que an. Bezahlt wird beim Abholen.</p>
+        <div class="notiz"><b>Entwurfsnotiz für Song Que</b><span>So käme eine Bestellung bei Ihnen an: als SMS oder E-Mail mit Gerichten, Abholzeit und Rückrufnummer. Sie bestätigen mit einer kurzen Antwort. Keine Bestellplattform, keine Provision. Auf Wunsch geht es auch per WhatsApp.</span></div>
+        <div><a class="knopf knopf-linie" href="tel:+41787685832">Lieber anrufen: 078 768 58 32</a></div>
+      </div>
+      <form class="zettel" id="zettel" novalidate>
+        <div class="zettel-kopf"><h3>Bestellzettel</h3><span data-nr>Nr. 2026</span></div>
+        <ul class="posten" id="posten" aria-live="polite"><li class="leer">Noch nichts ausgewählt. Tippen Sie in der Speisekarte auf «+».</li></ul>
+        <div class="summe" id="summe" hidden><span>Total<small>Bezahlt wird beim Abholen.</small></span><span id="total">CHF 0.–</span></div>
+        <div class="felder">
+          <div class="feld voll"><label for="f-zeit">Abholzeit</label><select id="f-zeit"><option>So bald wie möglich</option><option>In etwa 30 Minuten</option><option>In etwa einer Stunde</option><option>Später (Zeit unten angeben)</option></select></div>
+          <div class="feld"><label for="f-name">Name</label><input id="f-name" type="text" autocomplete="name" placeholder="Vor- und Nachname"></div>
+          <div class="feld"><label for="f-tel">Telefon</label><input id="f-tel" type="tel" autocomplete="tel" placeholder="079 000 00 00"></div>
+          <div class="feld voll"><label for="f-bem">Bemerkung</label><textarea id="f-bem" placeholder="z. B. ohne Koriander, extra scharf"></textarea></div>
+        </div>
+        <div class="senden"><button type="button" class="knopf knopf-rot" data-senden="sms">Per SMS senden</button><button type="button" class="knopf knopf-linie" data-senden="mail">Per E-Mail senden</button></div>
+        <div class="vorschau"><p>Vorschau: So kommt die Nachricht bei Song Que an</p><pre id="vorschau"></pre></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="besuch" id="oeffnungszeiten" aria-labelledby="h-zeiten">
+    <div class="innen">
+      <div>
+        <p class="oberzeile">Giờ mở cửa · Öffnungszeiten</p>
+        <h2 class="titel" id="h-zeiten">Offen an sieben Tagen</h2>
+        <p class="status" data-status><i aria-hidden="true"></i><span>Öffnungszeiten</span></p>
+        <table class="zeiten"><caption class="sr">Öffnungszeiten von Song Que</caption><tbody>
+<tr data-tag="mo"><th scope="row">Montag</th><td>17.00–21.00</td></tr>
+<tr data-tag="di"><th scope="row">Dienstag</th><td>11.30–21.00</td></tr>
+<tr data-tag="mi"><th scope="row">Mittwoch</th><td>11.30–21.00</td></tr>
+<tr data-tag="do"><th scope="row">Donnerstag</th><td>11.30–21.00</td></tr>
+<tr data-tag="fr"><th scope="row">Freitag</th><td>11.30–21.00</td></tr>
+<tr data-tag="sa"><th scope="row">Samstag</th><td>11.30–21.00</td></tr>
+<tr data-tag="so"><th scope="row">Sonntag</th><td>11.30–21.00</td></tr>
+        </tbody></table>
+        <div class="notiz"><b>Entwurfsnotiz für Song Que</b><span>Diese Zeiten stehen bei «Song Que» im Telefonbuch und auf Tripadvisor. Beim zweiten Eintrag «Thien Loc» an derselben Adresse und Nummer stehen andere. Sagen Sie mir, welche gelten, dann steht hier nur noch das Richtige.</span></div>
+      </div>
+      <div class="adresse">
+        <p class="oberzeile">Địa chỉ · Adresse</p>
+        <div class="tafeln" aria-hidden="true"><span class="strassenschild">Marktgasse</span><span class="hausnummer">34B</span></div>
+        <address><strong>Song Que</strong><span>Vietnamesisches Take-away</span><span>Marktgasse 34B</span><span>4900 Langenthal</span></address>
+        <div class="aktionen">
+          <a class="knopf knopf-rot" href="tel:+41787685832">Anrufen: 078 768 58 32</a>
+          <a class="knopf knopf-linie" href="https://www.google.com/maps/search/?api=1&amp;query=Marktgasse%2034B%2C%204900%20Langenthal" target="_blank" rel="noopener">Route planen</a>
+          <a class="knopf knopf-linie" href="mailto:takeaway.songque@gmail.com">E-Mail schreiben</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="fuss">
+  <div class="fliesen" aria-hidden="true"></div>
+  <div class="innen">
+    <div class="fuss-raster">
+      <div><a class="marke" href="#start">Song Que</a><p style="margin-top:12px">Vietnamesisches Take-away in Langenthal</p></div>
+      <div><h4>Adresse</h4><p>Marktgasse 34B<br>4900 Langenthal</p></div>
+      <div><h4>Kontakt</h4><p><a href="tel:+41787685832">078 768 58 32</a><br><a href="mailto:takeaway.songque@gmail.com">takeaway.songque@gmail.com</a></p></div>
+      <div><h4>Öffnungszeiten</h4><p>Mo 17.00–21.00<br>Di–So 11.30–21.00</p></div>
+    </div>
+    <div class="recht"><span>© 2026 Song Que</span><button type="button" data-info="impressum">Impressum</button><button type="button" data-info="datenschutz">Datenschutz</button><span class="schutz">Entwurf von Webfassade · Jeton Bardhaj. Urheberrechtlich geschützt: Verwendung oder Veröffentlichung nur mit schriftlicher Zustimmung.</span></div>
+  </div>
+</footer>
+
+<nav class="handy" aria-label="Schnellzugriff"><a class="knopf knopf-linie" href="tel:+41787685832">Anrufen</a><a class="knopf knopf-rot" href="#vorbestellen">Vorbestellen <span class="zahl" data-zahl hidden>0</span></a></nav>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(function () {
+  'use strict';
+  var FIRMA = 'Song Que', TEL = '+41787685832', MAIL = 'takeaway.songque@gmail.com';
+  var G = {"g1": {"name": "Phở Bò", "preis": 18.5}, "g2": {"name": "Gỏi Cuốn", "preis": 8.5}, "g3": {"name": "Chả Giò", "preis": 8.0}, "g4": {"name": "Bún Thịt Nướng", "preis": 18.5}, "g5": {"name": "Cơm Chiên", "preis": 17.0}, "g6": {"name": "Bánh Mì", "preis": 12.0}, "g7": {"name": "Cà Phê Sữa Đá", "preis": 5.5}};
+  var ZEITEN = { mo: [['17:00', '21:00']], di: [['11:30', '21:00']], mi: [['11:30', '21:00']], do: [['11:30', '21:00']], fr: [['11:30', '21:00']], sa: [['11:30', '21:00']], so: [['11:30', '21:00']] };
+  var TAGE = ['so', 'mo', 'di', 'mi', 'do', 'fr', 'sa'];
+  var TAG_LANG = { mo: 'Montag', di: 'Dienstag', mi: 'Mittwoch', do: 'Donnerstag', fr: 'Freitag', sa: 'Samstag', so: 'Sonntag' };
+  var INFO = {
+    impressum: 'Impressum: Hier stehen später Firmenname, Adresse und die verantwortliche Person. Die Angaben ergänze ich mit Ihnen.',
+    datenschutz: 'Datenschutz: Bevor die Seite online geht, kommt hier eine Datenschutzerklärung nach Schweizer Recht (revDSG) hin.'
+  };
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var chf = function (n) { var r = Math.round(n * 100) / 100; return Number.isInteger(r) ? r + '.–' : r.toFixed(2); };
+  var toMin = function (t) { var p = t.split(':'); return Number(p[0]) * 60 + Number(p[1]); };
+  var fmt = function (t) { return t.replace(':', '.'); };
+  var sanft = function () { return window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'; };
+
+  function jetzt() {
+    try {
+      var teile = new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/Zurich', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(new Date());
+      var p = {}; teile.forEach(function (x) { p[x.type] = x.value; });
+      var dow = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(p.weekday);
+      if (dow < 0) throw new Error('Wochentag');
+      return { dow: dow, min: (Number(p.hour) % 24) * 60 + Number(p.minute) };
+    } catch (e) { var d = new Date(); return { dow: d.getDay(), min: d.getHours() * 60 + d.getMinutes() }; }
+  }
+  function status() {
+    var n = jetzt(), heute = ZEITEN[TAGE[n.dow]] || [], i;
+    for (i = 0; i < heute.length; i++) if (n.min >= toMin(heute[i][0]) && n.min < toMin(heute[i][1])) return { offen: true, text: 'Jetzt geöffnet bis ' + fmt(heute[i][1]) };
+    for (i = 0; i < heute.length; i++) if (toMin(heute[i][0]) > n.min) return { offen: false, text: 'Geschlossen · öffnet heute ' + fmt(heute[i][0]) };
+    for (i = 1; i <= 7; i++) {
+      var k = TAGE[(n.dow + i) % 7], z = ZEITEN[k];
+      if (z && z.length) return { offen: false, text: 'Geschlossen · öffnet ' + (i === 1 ? 'morgen' : 'am ' + TAG_LANG[k]) + ' ' + fmt(z[0][0]) };
+    }
+    return { offen: false, text: 'Geschlossen' };
+  }
+  function zeigeStatus() {
+    var s = status(), heute = TAGE[jetzt().dow];
+    $$('[data-status]').forEach(function (el) { el.classList.toggle('offen', s.offen); el.querySelector('span').textContent = s.text; });
+    $$('.zeiten tr').forEach(function (tr) { tr.classList.toggle('heute', tr.getAttribute('data-tag') === heute); });
+  }
+
+  var korb = {};
+  function eintraege() { return Object.keys(G).filter(function (id) { return korb[id] > 0; }).map(function (id) { return [id, korb[id]]; }); }
+  function total(e) { return e.reduce(function (s, x) { return s + G[x[0]].preis * x[1]; }, 0); }
+  function nachricht() {
+    var e = eintraege(), L = ['Vorbestellung – ' + FIRMA, ''];
+    if (!e.length) L.push('(noch nichts ausgewählt)');
+    e.forEach(function (x) { L.push(x[1] + '× ' + G[x[0]].name + ' (' + chf(G[x[0]].preis * x[1]) + ')'); });
+    if (e.length) L.push('Total: CHF ' + chf(total(e)));
+    L.push('', 'Abholzeit: ' + $('#f-zeit').value, 'Name: ' + ($('#f-name').value.trim() || '–'));
+    var tel = $('#f-tel').value.trim(), bem = $('#f-bem').value.trim();
+    if (tel) L.push('Telefon: ' + tel);
+    if (bem) L.push('Bemerkung: ' + bem);
+    return L.join('\n');
+  }
+  function zeichne() {
+    var e = eintraege(), liste = $('#posten');
+    liste.innerHTML = e.length ? e.map(function (x) {
+      var n = esc(G[x[0]].name);
+      return '<li><span class="name">' + n + '</span><span class="menge"><button type="button" data-menge="' + x[0] + '" data-d="-1" aria-label="' + n + ': eins weniger">−</button><span>' + x[1] + '</span><button type="button" data-menge="' + x[0] + '" data-d="1" aria-label="' + n + ': eins mehr">+</button></span><span class="betrag">' + chf(G[x[0]].preis * x[1]) + '</span></li>';
+    }).join('') : '<li class="leer">Noch nichts ausgewählt. Tippen Sie in der Speisekarte auf «+».</li>';
+    $('#summe').hidden = !e.length;
+    $('#total').textContent = 'CHF ' + chf(total(e));
+    var anzahl = e.reduce(function (s, x) { return s + x[1]; }, 0);
+    $$('[data-zahl]').forEach(function (z) { z.hidden = !anzahl; z.textContent = anzahl; });
+    $$('[data-plus]').forEach(function (b) {
+      var q = korb[b.getAttribute('data-plus')] || 0;
+      b.setAttribute('aria-pressed', String(q > 0));
+      b.innerHTML = '+' + (q ? '<span class="anz" aria-hidden="true">' + q + '</span>' : '');
+    });
+    $('#vorschau').textContent = nachricht();
+  }
+  var toastZeit;
+  function toast(t) { var el = $('#toast'); el.textContent = t; el.hidden = false; clearTimeout(toastZeit); toastZeit = setTimeout(function () { el.hidden = true; }, 4200); }
+  function senden(kanal) {
+    if (!eintraege().length) { toast('Noch nichts ausgewählt. Tippen Sie in der Speisekarte auf «+».'); $('#speisekarte').scrollIntoView({ behavior: sanft(), block: 'start' }); return; }
+    var text = nachricht();
+    window.location.href = kanal === 'sms'
+      ? 'sms:' + TEL + '?&body=' + encodeURIComponent(text)
+      : 'mailto:' + MAIL + '?subject=' + encodeURIComponent('Vorbestellung – ' + FIRMA) + '&body=' + encodeURIComponent(text);
+  }
+  document.addEventListener('click', function (ev) {
+    var t = ev.target, b;
+    if ((b = t.closest('[data-plus]'))) { var id = b.getAttribute('data-plus'); korb[id] = (korb[id] || 0) + 1; zeichne(); toast(korb[id] + '× ' + G[id].name + ' auf dem Bestellzettel.'); return; }
+    if ((b = t.closest('[data-menge]'))) {
+      var mid = b.getAttribute('data-menge'), d = b.getAttribute('data-d');
+      korb[mid] = Math.max(0, (korb[mid] || 0) + Number(d)); zeichne();
+      var neu = $('[data-menge="' + mid + '"][data-d="' + d + '"]'); if (neu) neu.focus();
+      return;
+    }
+    if ((b = t.closest('[data-senden]'))) { senden(b.getAttribute('data-senden')); return; }
+    if ((b = t.closest('[data-info]'))) { toast(INFO[b.getAttribute('data-info')]); }
+  });
+  ['input', 'change'].forEach(function (typ) { document.addEventListener(typ, function (ev) { if (ev.target.closest('#zettel')) $('#vorschau').textContent = nachricht(); }); });
+  $('#zettel').addEventListener('submit', function (ev) { ev.preventDefault(); });
+  var heute = new Date();
+  $('[data-nr]').textContent = 'Nr. ' + heute.getFullYear() + '-' + String(heute.getMonth() + 1).padStart(2, '0') + String(heute.getDate()).padStart(2, '0');
+  document.title = FIRMA + ' · Entwurf';
+  zeigeStatus(); zeichne();
+  setInterval(zeigeStatus, 60000);
+})();
+</script>
+
+</body>
+</html>
