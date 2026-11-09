@@ -73,7 +73,7 @@ body::after{content:"";position:fixed;inset:-120px;z-index:70;pointer-events:non
 
 /* Schrift: Anzeige breit, Versalien, leicht gesperrt (nach Bugatti), Fliesstext ruhig */
 .label{font-size:11px;line-height:1.3;font-weight:600;font-stretch:125%;letter-spacing:.22em;text-transform:uppercase;color:var(--grau)}
-h2{font-size:clamp(28px,3.8vw,56px);line-height:1.06;font-weight:500;font-stretch:125%;letter-spacing:.02em;text-transform:uppercase;hyphens:auto}
+h2{font-size:clamp(28px,3.8vw,56px);line-height:1.06;font-weight:500;font-stretch:125%;letter-spacing:.02em;text-transform:uppercase;hyphens:manual}
 h3{font-weight:600}
 .lead{max-width:48ch;font-size:clamp(17px,1.4vw,20px);line-height:1.6;color:var(--grau)}
 .kopf-block{display:grid;gap:22px;justify-items:start;margin-bottom:clamp(48px,7vw,96px)}
@@ -258,7 +258,7 @@ a:hover>.rolle span,button:hover>.rolle span{transform:translateY(-100%)}
 .blatt::after{content:"";position:absolute;inset:0;background:#000;opacity:var(--dunkel,0);pointer-events:none}
 @media (min-width:1000px){.blatt{grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr);align-items:center;gap:44px}}
 .blatt-kopf{display:grid;gap:14px;align-content:center;justify-items:start}
-.blatt h3{font-size:clamp(21px,6.2vw,40px);hyphens:auto;line-height:1.02;font-weight:500;font-stretch:125%;letter-spacing:.02em;text-transform:uppercase}
+.blatt h3{font-size:clamp(21px,6.2vw,40px);hyphens:manual;line-height:1.02;font-weight:500;font-stretch:125%;letter-spacing:.02em;text-transform:uppercase}
 @media (min-width:1000px){.blatt h3{font-size:clamp(23px,2.3vw,32px)}}
 .blatt-art{color:var(--grau);font-size:15px}
 .merkmale{display:flex;flex-wrap:wrap;gap:8px}
@@ -328,6 +328,7 @@ a:hover>.rolle span,button:hover>.rolle span{transform:translateY(-100%)}
 .fuss-raster{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:32px;padding-top:36px;border-top:1px solid var(--linie);color:var(--grau);font-size:14.5px;line-height:1.7}
 .fuss h2{margin-bottom:10px;color:var(--grau-2);font-size:11px;line-height:1.3;font-weight:600;letter-spacing:.22em}
 .fuss a{color:var(--weiss);text-underline-offset:3px}
+.fuss-raster p a{display:inline-block;padding-block:5px}
 .rand{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;margin-top:40px;color:var(--grau-2);font-size:13px}
 
 /* Erscheinen beim Scrollen */
@@ -524,7 +525,7 @@ a:hover>.rolle span,button:hover>.rolle span{transform:translateY(-100%)}
         </article>
         <article class="blatt" style="--i:1">
           <div class="blatt-kopf">
-            <h3>Salon Scherenschnitt</h3>
+            <h3>Salon Scheren&shy;schnitt</h3>
             <p class="blatt-art">Coiffeur und Barber, erfundener Betrieb</p>
             <ul class="merkmale"><li>Preisliste</li><li>Team</li><li>Terminanfrage per WhatsApp oder E-Mail</li></ul>
           </div>
@@ -592,8 +593,8 @@ a:hover>.rolle span,button:hover>.rolle span{transform:translateY(-100%)}
       <img class="kontakt-bild" src="bilder/glas-1920.jpg" width="1920" height="1080" loading="lazy" decoding="async" alt="">
     </picture>
     <div class="innen">
-      <h2 id="h-kontakt">Neugierig, wie Ihre Seite aussehen könnte?</h2>
-      <p class="lead">Schreiben Sie mir den Namen Ihres Betriebs. Sie bekommen einen Entwurf, ohne dass Sie etwas abmachen müssen.</p>
+      <h2 id="h-kontakt">Neugierig, wie Ihre Seite aus&shy;sehen könnte?</h2>
+      <p class="lead">Schreiben Sie mir den Namen Ihres Betriebs. Sie bekommen einen Entwurf, ohne dass Sie etwas abmachen müssen. Haben Sie schon eine Website, zeige ich Ihnen, wie sie überarbeitet aussehen könnte.</p>
       <p class="status" data-status><span>Erreichbar Montag bis Freitag, 09.00 bis 18.00</span></p>
       <div class="anfrage" id="anfrage" role="group" aria-label="Anfrage vorbereiten">
         <div class="felder">
