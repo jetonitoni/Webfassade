@@ -1,0 +1,19 @@
+@font-face{font-family:'Mona Sans';src:url(schriften/mona-sans.woff2) format('woff2');font-weight:200 900;font-stretch:75% 125%;font-display:swap}
+:root{--grund:#0A0A0B;--flaeche:#111113;--linie:#26262A;--linie-2:#38383D;--weiss:#F1F0ED;--text:#C8C7C3;--grau:#9A999E;--eis:#C3D9F3}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--grund)}
+body{margin:0;color:var(--text);background:var(--grund);font:400 17px/1.65 'Mona Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.innen{width:min(760px,100% - 32px);margin-inline:auto;padding:48px 0 80px}
+a{color:var(--eis);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--eis);outline-offset:4px}
+.zurueck{display:inline-block;padding:10px 0;font-weight:600;font-stretch:118%;letter-spacing:.1em;text-transform:uppercase;font-size:13px;text-decoration:none}
+.marke{display:block;margin-top:34px;color:var(--grau);font-weight:600;font-stretch:125%;letter-spacing:.22em;text-transform:uppercase;font-size:11px}
+h1{margin:10px 0 28px;color:var(--weiss);font-weight:500;font-stretch:125%;letter-spacing:.02em;text-transform:uppercase;font-size:clamp(30px,7vw,48px);line-height:1.05;hyphens:manual;overflow-wrap:anywhere}
+h2{margin:40px 0 10px;padding-top:24px;border-top:1px solid var(--linie);color:var(--weiss);font-weight:600;font-stretch:110%;font-size:19px;line-height:1.3}
+p,li{margin:0 0 12px}
+ul{padding-left:20px;margin:0 0 12px}
+.kurz{padding:16px 18px;background:var(--flaeche);border:1px solid var(--linie-2)}
+.stand{margin-top:44px;color:var(--grau);font-size:14px}
+nav.recht{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:48px;padding-top:20px;border-top:1px solid var(--linie);font-size:15px}
+nav.recht a{padding:6px 0}
+nav.recht a[aria-current]{color:var(--weiss);text-decoration:none}
